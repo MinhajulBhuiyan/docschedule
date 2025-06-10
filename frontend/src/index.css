@@ -4,6 +4,10 @@
   --color-primary: #5F6FFF;
 }
 
+@theme {
+  --color-hero: #727cf5;
+}
+
 
 .active hr{
   @apply block
