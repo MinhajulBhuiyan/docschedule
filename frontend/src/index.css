@@ -2,18 +2,14 @@
 
 @theme {
   --color-primary: #5F6FFF;
-}
-
-@theme {
   --color-hero: #727cf5;
+  --gridTemplateColumns-auto: repeat(auto-fill, minmax(200px, 1fr));
 }
 
-
-.active hr{
-  @apply block
+.active hr {
+  @apply block;
 }
 
-
-::-webkit-scrollbar{
-  @apply hidden
+::-webkit-scrollbar {
+  @apply hidden;
 }
