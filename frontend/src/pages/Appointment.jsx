@@ -32,12 +32,12 @@ const Appointment = () => {
 
       // setting end time of the data with index
       let endTime = new Date()
-      endTime.setData(today.getDate()+i)
+      endTime.setDate(today.getDate()+i)
       endTime.setHours(21,0,0,0)
 
       //setting hours
-      if(today.getDate()=== cuurentDate.getDate()){
-        currentDate.setHours(cuurentDate.getHours()>10?currentDate.getHours()+1:10)
+      if(today.getDate()=== currentDate.getDate()){
+        currentDate.setHours(currentDate.getHours()>10?currentDate.getHours()+1:10)
         currentDate.setMinutes(currentDate.getMinutes()>30?30:0)
 
       }else{
@@ -59,7 +59,7 @@ const Appointment = () => {
         currentDate.setMinutes(currentDate.getMinutes()+30)
       }
 
-      setDocSlots(prev=>{[...prev,timeSlots]})
+      setDocSlots(prev=>[...prev,timeSlots])
 
       
     }
