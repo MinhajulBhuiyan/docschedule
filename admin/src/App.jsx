@@ -1,12 +1,14 @@
+import { Routes, Route } from 'react-router-dom';
 import React from 'react';
 import Login from './pages/login.jsx';
 import './index.css';
 
-const App =() => {
+function App() {
   return (
-    <div>
-      <Login />
-    </div>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      {/* other routes */}
+    </Routes>
   );
 }
 export default App;
