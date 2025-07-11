@@ -2,3 +2,8 @@
 @theme {
   --color-primary: #5F6FFF;
 }
+
+
+::-webkit-scrollbar{
+    @apply hidden;
+}
