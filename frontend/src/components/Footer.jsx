@@ -30,7 +30,7 @@ const Footer = () => {
                 <p className='text-xl font-medium mb-5'>Get in Touch</p>
                 <ul className='flex flex-col gap-2 text-gray-600'>
                     <li>+8801747-247276</li>
-                    <li>prescripto@gmail.com</li>
+                    <li>docschedule@gmail.com</li>
                 </ul>
                 
             </div>
@@ -39,7 +39,7 @@ const Footer = () => {
         {/* --------- Copyright Text -------------*/}
         <div>
             <hr />
-            <p className='py-5 text-sm text-center'>Copyright 2025@ Prescripto - All Right Reserved</p>
+            <p className='py-5 text-sm text-center'>Copyright 2025@ Docschedule - All Right Reserved</p>
         </div>       
     </div>
   )
