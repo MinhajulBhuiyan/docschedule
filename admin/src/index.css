@@ -1,7 +1,9 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 @theme {
   --color-primary: #5F6FFF;
+  --font-family-sans: Outfit, sans-serif;
 }
 
 ::-webkit-scrollbar {
