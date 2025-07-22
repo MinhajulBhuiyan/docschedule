@@ -1,0 +1,46 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+logs
+*.log
+log.txt
+
+# Runtime
+pids
+*.pid
+*.seed
+
+# Build files
+/build
+/dist
+
+# dotenv environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Coverage reports
+coverage/
+
+# Optional: ignore backend uploads or generated files
+uploads/
+public/uploads/
+
+# React specific
+*.env
+*.cache
+*.parcel-cache
