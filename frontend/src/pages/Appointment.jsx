@@ -194,26 +194,65 @@ const Appointment = () => {
                 
         </div>
 
-            {/* Booking slots */}
-            <div className='sm:ml-72 sm:pl-4 mt-8 font-medium text-[#565656]'>
-                <p >Booking slots</p>
-                <div className='flex gap-3 items-center w-full overflow-x-scroll mt-4'>
-                    {docSlots.length && docSlots.map((item, index) => (
-                        <div onClick={() => setSlotIndex(index)} key={index} className={`text-center py-6 min-w-16 rounded-full cursor-pointer ${slotIndex === index ? 'bg-primary text-white' : 'border border-[#DDDDDD]'}`}>
-                            <p>{item[0] && daysOfWeek[item[0].datetime.getDay()]}</p>
-                            <p>{item[0] && item[0].datetime.getDate()}</p>
-                        </div>
-                    ))}
-                </div>
+{/* Booking Slots */}
+<div className="sm:ml-72 sm:pl-4 mt-10 font-medium text-gray-700">
+  {/* Title */}
+  <p className="text-lg font-semibold text-blue-600 mb-3">Booking Slots</p>
 
-                <div className='flex items-center gap-3 w-full overflow-x-scroll mt-4'>
-                    {docSlots.length && docSlots[slotIndex].map((item, index) => (
-                        <p onClick={() => setSlotTime(item.time)} key={index} className={`text-sm font-light  flex-shrink-0 px-5 py-2 rounded-full cursor-pointer ${item.time === slotTime ? 'bg-primary text-white' : 'text-[#949494] border border-[#B4B4B4]'}`}>{item.time.toLowerCase()}</p>
-                    ))}
-                </div>
+  {/* Date Selection */}
+  <div className="flex gap-3 overflow-x-auto pb-2">
+    {docSlots.length && docSlots.map((item, index) => {
+      const isSelected = slotIndex === index;
+      const date = item[0]?.datetime;
+      return (
+        <div
+          key={index}
+          onClick={() => { setSlotIndex(index); setSlotTime(''); }}
+          className={`flex flex-col items-center justify-center px-4 py-3 min-w-[70px] rounded-lg cursor-pointer transition-colors 
+            ${isSelected ? "bg-blue-600 text-white" : "bg-white border border-gray-300 hover:border-blue-400"}`}
+        >
+          <span className="text-sm font-medium">{date && daysOfWeek[date.getDay()]}</span>
+          <span className="text-base font-semibold">{date && date.getDate()}</span>
+        </div>
+      )
+    })}
+  </div>
 
-                <button onClick={bookAppointment} className='bg-primary text-white text-sm font-light px-20 py-3 rounded-full my-6'>Book an appointment</button>
-            </div>
+ {/* Time Slots Dropdown for Selected Date */}
+{docSlots[slotIndex] && (
+  <div className="relative mt-4 w-48">
+    <select
+      value={slotTime}
+      onChange={(e) => setSlotTime(e.target.value)}
+      className="block w-full rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm text-gray-700 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 cursor-pointer transition"
+    >
+      <option value="" disabled>
+        Select a time
+      </option>
+      {docSlots[slotIndex].map((slot, idx) => (
+        <option key={idx} value={slot.time}>
+          {slot.time.toLowerCase()}
+        </option>
+      ))}
+    </select>
+  </div>
+)}
+
+
+  {/* Book Button */}
+  <div className="mt-6">
+    <button
+      onClick={bookAppointment}
+      disabled={!slotTime}
+      className={`w-full sm:w-auto px-8 py-3 rounded-full text-white font-medium transition
+        ${slotTime ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-300 cursor-not-allowed"}`}
+    >
+      Book Appointment
+    </button>
+  </div>
+</div>
+
+
 
             {/* Listing Releated Doctors */}
             <RelatedDoctors speciality={docInfo.speciality} docId={docId} />
