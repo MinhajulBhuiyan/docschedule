@@ -133,8 +133,10 @@ const Appointment = () => {
     return docInfo ? (
         <div>
 
+              <div>
+
            {/* ---------- Doctor Details ----------- */}
-<div className="flex flex-col sm:flex-row gap-8">
+<div className="flex flex-col sm:flex-row gap-8 p-3 m-2">
   {/* Profile Image */}
   <div className="flex justify-center sm:block">
     <div className="relative w-48 h-48 sm:w-64 sm:h-64 rounded-full p-1 bg-gradient-to-tr from-sky-400 to-indigo-600 shadow-lg">
@@ -190,6 +192,31 @@ const Appointment = () => {
 </div>
 
                 
+        </div>
+
+            {/* Booking slots */}
+            <div className='sm:ml-72 sm:pl-4 mt-8 font-medium text-[#565656]'>
+                <p >Booking slots</p>
+                <div className='flex gap-3 items-center w-full overflow-x-scroll mt-4'>
+                    {docSlots.length && docSlots.map((item, index) => (
+                        <div onClick={() => setSlotIndex(index)} key={index} className={`text-center py-6 min-w-16 rounded-full cursor-pointer ${slotIndex === index ? 'bg-primary text-white' : 'border border-[#DDDDDD]'}`}>
+                            <p>{item[0] && daysOfWeek[item[0].datetime.getDay()]}</p>
+                            <p>{item[0] && item[0].datetime.getDate()}</p>
+                        </div>
+                    ))}
+                </div>
+
+                <div className='flex items-center gap-3 w-full overflow-x-scroll mt-4'>
+                    {docSlots.length && docSlots[slotIndex].map((item, index) => (
+                        <p onClick={() => setSlotTime(item.time)} key={index} className={`text-sm font-light  flex-shrink-0 px-5 py-2 rounded-full cursor-pointer ${item.time === slotTime ? 'bg-primary text-white' : 'text-[#949494] border border-[#B4B4B4]'}`}>{item.time.toLowerCase()}</p>
+                    ))}
+                </div>
+
+                <button onClick={bookAppointment} className='bg-primary text-white text-sm font-light px-20 py-3 rounded-full my-6'>Book an appointment</button>
+            </div>
+
+            {/* Listing Releated Doctors */}
+            <RelatedDoctors speciality={docInfo.speciality} docId={docId} />
         </div>
     ) : null
 }
