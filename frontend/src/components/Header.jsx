@@ -5,19 +5,21 @@ import { TypeAnimation } from 'react-type-animation';
 
 const Header = () => {
   return (
-    <div className='relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500 shadow-2xl px-6 md:px-12 lg:px-20'>
+   <div className='relative rounded-3xl bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500 shadow-2xl px-6 md:px-12 lg:px-20'>
 
-      {/* Background Floating Blobs */}
-      <motion.div 
-        animate={{ y: [0, 20, 0], x: [0, 10, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className='absolute -top-32 -left-32 w-72 h-72 bg-blue-300/20 rounded-full blur-3xl'
-      />
-      <motion.div 
-        animate={{ y: [0, -20, 0], x: [0, -10, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className='absolute bottom-10 -right-32 w-96 h-96 bg-blue-400/30 rounded-full blur-3xl'
-      />
+  {/* Background Floating Blobs */}
+  <div className='absolute inset-0 overflow-hidden pointer-events-none'>
+    <motion.div 
+      animate={{ y: [0, 20, 0], x: [0, 10, 0] }}
+      transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      className='absolute -top-32 -left-32 w-72 h-72 bg-blue-300/20 rounded-full blur-3xl'
+    />
+    <motion.div 
+      animate={{ y: [0, -20, 0], x: [0, -10, 0] }}
+      transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      className='absolute bottom-10 -right-32 w-96 h-96 bg-blue-400/30 rounded-full blur-3xl'
+    />
+  </div>
 
       {/* Main Content */}
       <div className='flex flex-col md:flex-row items-center justify-between relative z-10'>
