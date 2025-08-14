@@ -14,6 +14,7 @@ import Login from './pages/Login';
 import DoctorAppointments from './pages/Doctor/DoctorAppointments';
 import DoctorDashboard from './pages/Doctor/DoctorDashboard';
 import DoctorProfile from './pages/Doctor/DoctorProfile';
+import Homepage from './pages/Admin/HomePage';
 
 const App = () => {
 
@@ -27,7 +28,7 @@ const App = () => {
       <div className='flex items-start'>
         <Sidebar />
         <Routes>
-          <Route path='/' element={<></>} />
+          <Route path='/' element={<Homepage/>} />
           <Route path='/admin-dashboard' element={<Dashboard />} />
           <Route path='/all-appointments' element={<AllAppointments />} />
           <Route path='/add-doctor' element={<AddDoctor />} />
