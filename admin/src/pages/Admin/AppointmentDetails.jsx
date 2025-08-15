@@ -1,23 +1,33 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { User, Phone, MapPin, Calendar, Clock, UserCheck } from "lucide-react";
+import { User, Phone, MapPin, Calendar, Clock, UserCheck, Info, DollarSign, Layers } from "lucide-react";
 
 const AppointmentDetails = () => {
+
+  // -------------------- Hooks --------------------
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Get appointment passed from previous page
   const { appointment: stateAppointment } = location.state || {};
   const [appointment, setAppointment] = useState(null);
 
+  // Set local state
   useEffect(() => {
-    if (stateAppointment) setAppointment(stateAppointment);
+    if (stateAppointment) {
+      setAppointment(stateAppointment);
+    }
   }, [stateAppointment]);
 
+  // -------------------- Fallback UI --------------------
   if (!appointment) {
     return (
-      <div className="p-6 text-center">
-        <p className="text-lg font-semibold">Appointment not found.</p>
+      <div className="p-10 text-center min-h-screen flex flex-col justify-center items-center bg-gray-50">
+        <p className="text-2xl font-semibold text-gray-800 mb-6">
+          ⚠ Appointment not found
+        </p>
         <button
-          className="mt-4 px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-200"
+          className="px-6 py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition duration-300 font-bold"
           onClick={() => navigate(-1)}
         >
           ← Go Back
@@ -26,78 +36,130 @@ const AppointmentDetails = () => {
     );
   }
 
+  // -------------------- Main UI --------------------
   return (
-    <div className="p-8 max-w-6xl mx-auto space-y-10">
-      <h1 className="text-4xl font-extrabold tracking-tight text-gray-800 text-center">
-        📋 Appointment Details
-      </h1>
+    <div className="p-12 max-w-6xl mx-auto space-y-12">
 
-      {/* Patient Section */}
-      <section className="bg-gradient-to-r from-blue-50 to-blue-100 border-l-4 border-blue-500 rounded-3xl shadow-xl p-8 space-y-5">
-        <h2 className="text-2xl font-bold flex items-center gap-3 text-blue-700">
-          <User className="w-6 h-6" /> Patient Information
+      {/* ==================== Page Heading ==================== */}
+      <header className="text-center space-y-4">
+        <h1 className="text-5xl font-extrabold tracking-tight text-gray-900">
+          📋 Appointment Details
+        </h1>
+        <p className="text-gray-600 text-lg">
+          Detailed information about this appointment including patient, doctor, and appointment specifics.
+        </p>
+        <div className="w-32 h-1 bg-blue-600 rounded-full mx-auto mt-4"></div>
+      </header>
+
+      {/* ==================== Patient Section ==================== */}
+      <section className="bg-gradient-to-r from-blue-50 to-blue-100 border-l-4 border-blue-500 rounded-3xl shadow-xl p-12 space-y-6 hover:shadow-2xl transition duration-300">
+
+        <h2 className="text-3xl font-bold flex items-center gap-4 text-blue-700">
+          <User className="w-8 h-8" /> Patient Information
         </h2>
-        <div className="flex flex-col sm:flex-row sm:items-center gap-8">
+
+        <div className="flex flex-col sm:flex-row sm:items-center gap-12">
+
           <img
             src={appointment.patientImage}
             alt={appointment.patientName}
-            className="w-28 h-28 rounded-full object-cover shadow-2xl border-4 border-blue-300"
+            className="w-36 h-36 rounded-full object-cover shadow-2xl border-4 border-blue-300"
           />
-          <div className="space-y-2 text-gray-700 text-lg">
-            <p className="font-semibold text-gray-900">{appointment.patientName}</p>
-            <p className="flex items-center gap-2">
-              <Phone className="w-5 h-5 text-gray-500" /> {appointment.patientPhone}
+
+          <div className="space-y-3 text-gray-700 text-lg">
+
+            <p className="text-2xl font-semibold text-gray-900">
+              {appointment.patientName}
             </p>
-            <p className="flex items-center gap-2">
-              <MapPin className="w-5 h-5 text-gray-500" />{" "}
+
+            <div className="flex items-center gap-4 text-gray-600 text-lg">
+              <Phone className="w-5 h-5" /> {appointment.patientPhone}
+            </div>
+
+            <div className="flex items-start gap-4 text-gray-600 text-lg">
+              <MapPin className="w-5 h-5 mt-0.5" />
               {typeof appointment.patientAddress === "object"
                 ? `${appointment.patientAddress.line1}, ${appointment.patientAddress.line2}`
                 : appointment.patientAddress}
-            </p>
-            <p>
+            </div>
+
+            <p className="text-gray-700 text-lg">
               <span className="font-medium">Age:</span> {appointment.patientAge} years
             </p>
+
           </div>
         </div>
+
+        <div className="flex gap-6 mt-6 flex-wrap">
+          <div className="flex items-center gap-2 bg-blue-200 text-blue-800 px-4 py-2 rounded-full font-semibold shadow">
+            <Info className="w-5 h-5" /> Patient Info
+          </div>
+          <div className="flex items-center gap-2 bg-blue-200 text-blue-800 px-4 py-2 rounded-full font-semibold shadow">
+            <Layers className="w-5 h-5" /> Contact Verified
+          </div>
+        </div>
+
       </section>
 
-      {/* Doctor Section */}
-      <section className="bg-gradient-to-r from-green-50 to-green-100 border-l-4 border-green-500 rounded-3xl shadow-xl p-8 space-y-5">
-        <h2 className="text-2xl font-bold flex items-center gap-3 text-green-700">
-          <UserCheck className="w-6 h-6" /> Doctor Information
+      {/* ==================== Doctor Section ==================== */}
+      <section className="bg-gradient-to-r from-green-50 to-green-100 border-l-4 border-green-500 rounded-3xl shadow-xl p-12 space-y-6 hover:shadow-2xl transition duration-300">
+
+        <h2 className="text-3xl font-bold flex items-center gap-4 text-green-700">
+          <UserCheck className="w-8 h-8" /> Doctor Information
         </h2>
-        <div className="flex flex-col sm:flex-row sm:items-center gap-8">
+
+        <div className="flex flex-col sm:flex-row sm:items-center gap-12">
+
           <img
             src={appointment.doctorImage}
             alt={appointment.doctorName}
-            className="w-28 h-28 rounded-full object-cover shadow-2xl border-4 border-green-300"
+            className="w-36 h-36 rounded-full object-cover shadow-2xl border-4 border-green-300"
           />
-          <div className="space-y-2 text-gray-700 text-lg">
-            <p className="font-semibold text-gray-900">{appointment.doctorName}</p>
-            <p>
+
+          <div className="space-y-3 text-gray-700 text-lg">
+
+            <p className="text-2xl font-semibold text-gray-900">
+              {appointment.doctorName}
+            </p>
+
+            <p className="text-gray-700 text-lg">
               <span className="font-medium">Speciality:</span> {appointment.doctorSpeciality}
             </p>
-            <p className="text-sm text-gray-500">Assigned Doctor</p>
+
+            <p className="text-gray-500 text-lg">
+              Assigned Doctor
+            </p>
+
           </div>
         </div>
+
       </section>
 
-      {/* Appointment Info */}
-      <section className="bg-gradient-to-r from-yellow-50 to-yellow-100 border-l-4 border-yellow-500 rounded-3xl shadow-xl p-8 space-y-5">
-        <h2 className="text-2xl font-bold flex items-center gap-3 text-yellow-700">
-          <Calendar className="w-6 h-6" /> Appointment Details
+      {/* ==================== Appointment Info Section ==================== */}
+      <section className="bg-gradient-to-r from-yellow-50 to-yellow-100 border-l-4 border-yellow-500 rounded-3xl shadow-xl p-12 space-y-6 hover:shadow-2xl transition duration-300">
+
+        <h2 className="text-3xl font-bold flex items-center gap-4 text-yellow-700">
+          <Calendar className="w-8 h-8" /> Appointment Details
         </h2>
-        <div className="flex flex-col sm:flex-row sm:items-center gap-10 text-gray-800 text-lg">
-          <p className="flex items-center gap-2">
-            <Calendar className="w-5 h-5 text-gray-500" /> Date: {appointment.date}
-          </p>
-          <p className="flex items-center gap-2">
-            <Clock className="w-5 h-5 text-gray-500" /> Time: {appointment.time}
-          </p>
-          <p>
-            <span className="font-medium">Status:</span>{" "}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-gray-800 text-lg">
+
+          <div className="flex items-center gap-3 text-lg">
+            <Calendar className="w-6 h-6 text-gray-500" /> Date: {appointment.date}
+          </div>
+
+          <div className="flex items-center gap-3 text-lg">
+            <Clock className="w-6 h-6 text-gray-500" /> Time: {appointment.time}
+          </div>
+
+          <div className="flex items-center gap-3 text-lg">
+            <DollarSign className="w-6 h-6 text-gray-500" /> Fees: ${appointment.fees}
+          </div>
+
+          <div className="flex items-center gap-3 text-lg">
+            <span className="font-medium">Status:</span>
             <span
-              className={`px-4 py-1 rounded-full text-white font-semibold ${
+              className={`px-6 py-2 rounded-full text-white font-bold text-lg ${
                 appointment.status === "Pending"
                   ? "bg-yellow-500"
                   : appointment.status === "Completed"
@@ -107,21 +169,22 @@ const AppointmentDetails = () => {
             >
               {appointment.status}
             </span>
-          </p>
-          <p className="text-gray-700">
-            <span className="font-medium">Fees:</span> ${appointment.fees}
-          </p>
+          </div>
+
         </div>
+
       </section>
 
-      <div className="text-center">
+      {/* ==================== Back Button ==================== */}
+      <div className="text-center mt-12">
         <button
-          className="px-8 py-3 rounded-2xl bg-gray-200 text-gray-800 hover:bg-gray-300 font-semibold transition duration-200"
+          className="px-12 py-4 rounded-3xl bg-gray-200 text-gray-800 hover:bg-gray-300 font-bold text-xl shadow-lg transition duration-300"
           onClick={() => navigate(-1)}
         >
           ← Back to Appointments
         </button>
       </div>
+
     </div>
   );
 };
