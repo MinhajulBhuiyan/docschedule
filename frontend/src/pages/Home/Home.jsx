@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { assets, doctors } from '../../assets/assets_frontend/assets'
 
 // Enhanced Home Page Component with Advanced Features
+// Last Updated: December 2024
 const Home = () => {
   // State management for various home page features
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
