@@ -1,45 +1,216 @@
 import React from 'react'
 import { assets } from "../assets/assets_frontend/assets";
+import { motion } from 'framer-motion';
 
 const About = () => {
+  const features = [
+    {
+      icon: "⚡",
+      title: "EFFICIENCY",
+      description: "Streamlined appointment scheduling that fits into your busy lifestyle.",
+      color: "blue"
+    },
+    {
+      icon: "🎯",
+      title: "CONVENIENCE",
+      description: "Access to a network of trusted healthcare professionals in your area.",
+      color: "green"
+    },
+    {
+      icon: "✨",
+      title: "PERSONALIZATION",
+      description: "Tailored recommendations and reminders to help you stay on top of your health.",
+      color: "purple"
+    },
+    {
+      icon: "🛡️",
+      title: "SECURITY",
+      description: "Your health data is protected with industry-leading security measures.",
+      color: "red"
+    }
+  ];
+
+  const stats = [
+    { number: "10K+", label: "Happy Patients" },
+    { number: "500+", label: "Expert Doctors" },
+    { number: "50+", label: "Specialties" },
+    { number: "24/7", label: "Support" }
+  ];
+
   return (
-    <div>
-        <div className='text-center text-2xl pt-10 text-gray-500'>
-            <p>ABOUT <span className='text-gray-700 font-medium'>US</span></p>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+      {/* Hero Section */}
+      <div className="bg-gradient-to-r from-blue-900 via-blue-700 to-blue-500 text-white">
+        <div className="max-w-7xl mx-auto px-6 py-20">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+              About <span className="text-blue-200">Prescripto</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
+              Your trusted partner in managing healthcare needs conveniently and efficiently
+            </p>
+          </motion.div>
         </div>
-        <div className='my-10 flex flex-col md:flex-row gap-12'>
-            <img className='w-full md:max-w-[360px]' src={assets.about_image} alt="" />
-            <div className='flex flex-col justify-center gap-6 md:w-2/4 text-sm text-gray-600'>
-                <p>Welcome To Prescripto, Your Trusted Partner In Managing Your HealthCare Needs Conveniently And Efficiently.
-                    At Prescripto, We Understand The Challenges Individuals Face When It Comes To Scheduling Doctor Appointments And Managing Their Health Records.
-                </p>
-                <p>Prescripto Is Commited To Excellence In Healthcare Technology.
-                    We Continously Strive To Enhance Our Platform, Integrating The Latest Advancements To Improve User Experience And Deliver Superior Service.
-                    Whether You're Booking Your First Appointment Or Managing Ongoing Care, Prescripto Is Here To Support You Every Step Of The Way.
-                </p>
-                <b className='text-gray-800'>Our Vision</b>
-                <p>Our Vision At Prescripto Is To Create A Seamless HealthCare Experience For Every User.
-                    We Aim To Bridge The Gap Between Patients And HealthCare Providers, Making It Easier For You To Access The Care You Need, When You Need It.
-                </p>
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        {/* Mission Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+              Revolutionizing Healthcare Access
+            </h2>
+            <div className="space-y-6 text-gray-600 leading-relaxed">
+              <p className="text-lg">
+                At Prescripto, we understand the challenges individuals face when it comes to 
+                scheduling doctor appointments and managing their health records. We're committed 
+                to making healthcare accessible, convenient, and personalized for everyone.
+              </p>
+              <p className="text-lg">
+                Our platform bridges the gap between patients and healthcare providers, 
+                ensuring you get the care you need when you need it, without the hassle 
+                of traditional appointment booking systems.
+              </p>
             </div>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <img 
+              className="w-full rounded-2xl shadow-2xl" 
+              src={assets.about_image} 
+              alt="Healthcare professionals" 
+            />
+            <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-6 max-w-xs">
+              <div className="text-3xl font-bold text-blue-600 mb-2">5+ Years</div>
+              <div className="text-gray-600">Serving patients with excellence</div>
+            </div>
+          </motion.div>
         </div>
-        <div className='text-xl my-4'>
-            <p>WHY <span className='text-gray-700 font-semibold'>CHOOSE US</span></p>
+
+        {/* Vision Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-3xl p-12 mb-20 text-center"
+        >
+          <h2 className="text-4xl font-bold text-gray-800 mb-8">Our Vision</h2>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            To create a seamless healthcare experience for every user, making quality healthcare 
+            accessible to everyone, everywhere. We envision a world where managing your health 
+            is as simple as a few clicks, and where every patient feels empowered and supported 
+            in their healthcare journey.
+          </p>
+        </motion.div>
+
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20"
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">
+                {stat.number}
+              </div>
+              <div className="text-gray-600 font-medium">{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Features Section */}
+        <div className="mb-20">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-4xl font-bold text-center text-gray-800 mb-16"
+          >
+            Why Choose <span className="text-blue-600">Prescripto</span>
+          </motion.h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+              >
+                <div className="text-4xl mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-bold text-gray-800 mb-4">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
-        <div className='flex flex-col md:flex-row mb-20'>
-            <div className='border px-10 md:px-16 py-8 sm:py-16 flex flex-col gap-5 text-[15px] hover:bg-primary hover:text-white transition-all duration-300 text-gray-600 cursor-pointer'>
-                <b>EFFICIENCY:</b>
-                <p>Streamlined Appointment Scheduling That Fits Into Your Busy Lifestyle.</p>
+
+        {/* Team Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-3xl p-12 shadow-xl border border-gray-100"
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Commitment</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              We continuously strive to enhance our platform, integrating the latest advancements 
+              to improve user experience and deliver superior service.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center p-6 rounded-xl bg-blue-50">
+              <div className="text-3xl mb-4">🔬</div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Innovation</h3>
+              <p className="text-gray-600">Cutting-edge technology for better healthcare</p>
             </div>
-            <div className='border px-10 md:px-16 py-8 sm:py-16 flex flex-col gap-5 text-[15px] hover:bg-primary hover:text-white transition-all duration-300 text-gray-600 cursor-pointer'>
-                <b>CONVENIENCE:</b>
-                <p>Access To A Network Of Trusted HealthCare Professionals In Your Area.</p>
+            <div className="text-center p-6 rounded-xl bg-green-50">
+              <div className="text-3xl mb-4">🤝</div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Trust</h3>
+              <p className="text-gray-600">Building lasting relationships with patients</p>
             </div>
-            <div className='border px-10 md:px-16 py-8 sm:py-16 flex flex-col gap-5 text-[15px] hover:bg-primary hover:text-white transition-all duration-300 text-gray-600 cursor-pointer'>
-                <b>PERSONALIZATION:</b>
-                <p>Tailored Recommenations And Remainders To Help You Stay On Top Of Your Health.</p>
+            <div className="text-center p-6 rounded-xl bg-purple-50">
+              <div className="text-3xl mb-4">💪</div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Excellence</h3>
+              <p className="text-gray-600">Unwavering commitment to quality service</p>
             </div>
-        </div>
+          </div>
+        </motion.div>
+      </div>
     </div>
   )
 }
