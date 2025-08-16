@@ -5,10 +5,10 @@ import authAdmin from "../middlewares/authAdmin.js"
 const newsrouter = express.Router()
 
 // admin only
-router.post("/add", authAdmin, addNews)
+newsrouter.post("/add", authAdmin, addNews)
 
 // public
-router.get("/all", listNews)
-router.get("/featured", getFeaturedNews)
+newsrouter.get("/all", listNews)
+newsrouter.get("/featured", getFeaturedNews)
 
 export default newsrouter
