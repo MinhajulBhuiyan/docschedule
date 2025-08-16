@@ -37,7 +37,7 @@ const CookiePolicy = () => {
                   1. What Are Cookies?
                 </h3>
                 <div className="space-y-3 text-gray-600">
-                  <p>Cookies are small text files that are stored on your device (computer, tablet, or mobile phone) when you visit our website. They help us provide you with a better experience and allow certain features to work properly.</p>
+                  <p>Cookie are small text file that are stored on your device (computer, tablet, or mobile phone) when you visit our website. They help us provide you with a better experience and allow certain features to work properly.</p>
                   <p>Cookies can be either "session cookies" (which are deleted when you close your browser) or "persistent cookies" (which remain on your device for a set period of time).</p>
                 </div>
               </section>
