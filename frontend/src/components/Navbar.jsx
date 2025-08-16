@@ -114,6 +114,16 @@ React.useEffect(() => {
           </NavLink>
         </ul>
 
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setShowMenu(!showMenu)}
+          className='md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200'
+        >
+          <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
         {/* Right Side Actions */}
     {/* Right Side Actions */}
 <div className='flex items-center gap-6'>
@@ -181,8 +191,52 @@ React.useEffect(() => {
       ✨ Create Account ✨
     </motion.button>
   )}
-</div>
-    </div>
+        </div>
+
+        {/* Mobile Menu Dropdown */}
+        <AnimatePresence>
+          {showMenu && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50"
+            >
+              <div className="px-6 py-4 space-y-3">
+                <NavLink 
+                  to='/' 
+                  onClick={() => setShowMenu(false)}
+                  className="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200"
+                >
+                  HOME
+                </NavLink>
+                <NavLink 
+                  to='/doctors' 
+                  onClick={() => setShowMenu(false)}
+                  className="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200"
+                >
+                  ALL DOCTORS
+                </NavLink>
+                <NavLink 
+                  to='/about' 
+                  onClick={() => setShowMenu(false)}
+                  className="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200"
+                >
+                  ABOUT
+                </NavLink>
+                <NavLink 
+                  to='/contact' 
+                  onClick={() => setShowMenu(false)}
+                  className="block py-3 px-4 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200"
+                >
+                  CONTACT
+                </NavLink>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   )
 }
