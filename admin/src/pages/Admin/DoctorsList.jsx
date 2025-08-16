@@ -115,7 +115,7 @@ const DoctorsList = () => {
           <li>Hover over doctor photos for a <strong>smooth zoom-in effect</strong>.</li>
           <li>Toggle availability with a single click — updates in real time.</li>
           <li>Doctor cards contain profile image, name, degree, speciality, and availability status.</li>
-          <li>Each card also includes a <strong>“View Full Profile”</strong> button for quick navigation.</li>
+          <li>Each cards also includes a <strong>“View Full Profile”</strong> button for quick navigation.</li>
         </ul>
       </div>
     </div>
