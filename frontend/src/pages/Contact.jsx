@@ -35,7 +35,7 @@ const Contact = () => {
     {
       icon: "📍",
       title: "Our Office",
-      details: "54709 Willms Station, Suite 350, Washington, USA",
+      details: "Uttara Dhaka, Bangladesh",
       color: "blue"
     },
     {

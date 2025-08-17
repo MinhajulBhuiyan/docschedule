@@ -165,7 +165,7 @@ const CookiePolicy = () => {
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <p><strong>Email:</strong> privacy@prescripto.com</p>
                     <p><strong>Phone:</strong> +1-212-456-7890</p>
-                    <p><strong>Address:</strong> 123 Healthcare Ave, Medical District, NY 10001</p>
+                    <p><strong>Address:</strong> Uttara Dhaka, Bangladesh</p>
                   </div>
                 </div>
               </section>
