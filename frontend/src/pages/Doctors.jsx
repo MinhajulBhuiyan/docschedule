@@ -223,48 +223,56 @@ const Doctors = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* Header Section */}
-      <div className="bg-white shadow-sm border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <motion.h1 
+      <div className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 shadow-lg border-b border-blue-100">
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl font-bold text-gray-800 mb-2 text-center"
+            className="text-center"
           >
-            Find Your Perfect Doctor
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-gray-600 text-center text-lg"
-          >
-            Browse through our network of qualified healthcare professionals
-          </motion.p>
+            <div className="inline-flex items-center gap-3 mb-4 bg-blue-100 px-6 py-2 rounded-full">
+              <span className="text-2xl">🏥</span>
+              <span className="text-blue-700 font-semibold uppercase tracking-wide text-sm">Healthcare Professionals</span>
+            </div>
+            <motion.h1 
+              className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4"
+            >
+              Find Your Perfect Doctor
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-gray-600 text-xl max-w-2xl mx-auto leading-relaxed"
+            >
+              Browse through our network of qualified healthcare professionals and book appointments with ease
+            </motion.p>
+          </motion.div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Search and Filter Section */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-xl p-8 mb-8 border border-gray-200">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {/* Search Input */}
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-gray-700 mb-2">Search Doctors</label>
-              <div className="relative">
+              <label className="block text-sm font-semibold text-gray-800 mb-3 uppercase tracking-wide">Search Doctors</label>
+              <div className="relative group">
                 <input
                   type="text"
                   placeholder="Search by name, speciality, or location..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full pl-12 pr-12 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 hover:border-gray-300 bg-white shadow-sm group-hover:shadow-md"
                 />
-                <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-500 text-lg">
                   🔍
                 </span>
                 {searchTerm && (
                   <button
                     onClick={() => setSearchTerm('')}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-red-100 hover:bg-red-200 text-red-500 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
                   >
                     ✕
                   </button>
@@ -274,42 +282,59 @@ const Doctors = () => {
 
             {/* Sort Dropdown */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Sort By</label>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-              >
-                <option value="name">Name</option>
-                <option value="experience">Experience</option>
-                <option value="rating">Rating</option>
-                <option value="fee">Fee</option>
-              </select>
+              <label className="block text-sm font-semibold text-gray-800 mb-3 uppercase tracking-wide">Sort By</label>
+              <div className="relative group">
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="w-full px-5 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300 hover:border-gray-300 bg-white shadow-sm group-hover:shadow-md appearance-none cursor-pointer"
+                >
+                  <option value="name">Name</option>
+                  <option value="experience">Experience</option>
+                  <option value="rating">Rating</option>
+                  <option value="fee">Fee</option>
+                </select>
+                <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
             </div>
 
             {/* View Mode Toggle */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">View</label>
-              <div className="flex border border-gray-300 rounded-xl overflow-hidden">
+              <label className="block text-sm font-semibold text-gray-800 mb-3 uppercase tracking-wide">View</label>
+              <div className="flex bg-gray-100 p-1 rounded-2xl shadow-inner">
                 <button
                   onClick={() => setViewMode('grid')}
-                  className={`flex-1 px-4 py-3 transition-all duration-200 ${
+                  className={`flex-1 px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 ${
                     viewMode === 'grid' 
-                      ? 'bg-blue-600 text-white' 
-                      : 'bg-white text-gray-600 hover:bg-gray-50'
+                      ? 'bg-white text-blue-600 shadow-lg border border-gray-200' 
+                      : 'text-gray-600 hover:text-gray-800'
                   }`}
                 >
-                  Grid
+                  <span className="flex items-center justify-center gap-2">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                    </svg>
+                    Grid
+                  </span>
                 </button>
                 <button
                   onClick={() => setViewMode('list')}
-                  className={`flex-1 px-4 py-3 transition-all duration-200 ${
+                  className={`flex-1 px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 ${
                     viewMode === 'list' 
-                      ? 'bg-blue-600 text-white' 
-                      : 'bg-white text-gray-600 hover:bg-gray-50'
+                      ? 'bg-white text-blue-600 shadow-lg border border-gray-200' 
+                      : 'text-gray-600 hover:text-gray-800'
                   }`}
                 >
-                  List
+                  <span className="flex items-center justify-center gap-2">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                    </svg>
+                    List
+                  </span>
                 </button>
               </div>
             </div>
@@ -326,15 +351,21 @@ const Doctors = () => {
                   <button
                     key={cat.name}
                     onClick={() => handleCategoryClick(cat.name)}
-                    className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-300 hover:shadow-md ${
+                    className={`w-full text-left p-4 rounded-2xl border-2 transition-all duration-300 hover:shadow-lg transform hover:scale-105 group ${
                       (speciality === cat.name || selectedCategory === cat.name)
                         ? getCategoryStyles(cat.color)
-                        : 'bg-white border-gray-200 text-gray-700 hover:border-gray-300'
+                        : 'bg-white border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-50'
                     }`}
                   >
-                    <div className="flex items-center gap-3">
-                      <span className="text-2xl">{cat.icon}</span>
-                      <span className="font-medium">{cat.name}</span>
+                    <div className="flex items-center gap-4">
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl transition-all duration-300 ${
+                        (speciality === cat.name || selectedCategory === cat.name)
+                          ? 'bg-white shadow-md'
+                          : 'bg-gray-100 group-hover:bg-gray-200'
+                      }`}>
+                        {cat.icon}
+                      </div>
+                      <span className="font-semibold text-lg">{cat.name}</span>
                     </div>
                   </button>
                 ))}
@@ -398,9 +429,14 @@ const Doctors = () => {
                     setSelectedCategory('')
                     navigate('/doctors')
                   }}
-                  className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-lg transition-colors duration-300 text-sm"
+                  className="bg-gradient-to-r from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 text-gray-700 px-6 py-3 rounded-xl transition-all duration-300 text-sm font-medium border border-gray-300 hover:border-gray-400 transform hover:scale-105 active:scale-95 shadow-sm"
                 >
-                  Clear All Filters
+                  <span className="flex items-center gap-2">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    Clear All Filters
+                  </span>
                 </button>
               )}
             </div>
@@ -478,9 +514,14 @@ const Doctors = () => {
                                 setSelectedCategory('')
                                 navigate('/doctors')
                               }}
-                              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition-colors duration-300"
+                              className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl font-semibold text-lg"
                             >
-                              View All Doctors
+                              <span className="flex items-center gap-3">
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                View All Doctors
+                              </span>
                             </button>
                             {searchTerm && (
                               <button
