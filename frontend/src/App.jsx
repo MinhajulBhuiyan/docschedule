@@ -16,6 +16,7 @@ import Verify from './pages/Verify'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import CookiePolicy from './pages/CookiePolicy'
+import Demo from './pages/Demo'
 
 const App = () => {
   const [isMobile, setIsMobile] = useState(false)
@@ -54,6 +55,7 @@ const App = () => {
               <Route path='/privacy-policy' element={<PrivacyPolicy />} />
               <Route path='/terms-of-service' element={<TermsOfService />} />
               <Route path='/cookie-policy' element={<CookiePolicy />} />
+              <Route path='/demo' element={<Demo />} />
             </Routes>
           </main>
           

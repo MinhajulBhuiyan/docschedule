@@ -2,10 +2,27 @@ import React from 'react'
 import { assets } from "../assets/assets_frontend/assets";
 import { motion } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate = useNavigate();
+  
   return (
    <div className='relative rounded-3xl bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500 shadow-2xl px-6 md:px-12 lg:px-20'>
+
+  {/* Watch Demo Button - Bottom Right Corner */}
+  <motion.button
+    initial={{ opacity: 0, scale: 0.8 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.6, delay: 0.8 }}
+    onClick={() => navigate('/demo')}
+    className='absolute bottom-6 right-6 z-30 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white px-3 py-1.5 rounded-full font-medium text-xs shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-110 active:scale-95 flex items-center gap-1.5'
+  >
+    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    Demo
+  </motion.button>
 
   {/* Background Floating Blobs */}
   <div className='absolute inset-0 overflow-hidden pointer-events-none'>
