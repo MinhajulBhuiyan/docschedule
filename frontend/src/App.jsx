@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import Sidebar from './components/Sidebar'
+import React from 'react'
 import Navbar from './components/Navbar'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
@@ -20,53 +19,35 @@ import CookiePolicy from './pages/CookiePolicy'
 import Demo from './pages/Demo'
 
 const App = () => {
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-    
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
-
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50">
       <ToastContainer />
-      <Sidebar />
       
-      {/* Main Content Area */}
-      <div className={`flex-1 transition-all duration-300 ${isMobile ? 'ml-0' : 'ml-72'}`}>
-        <div className="min-h-screen flex flex-col">
-          {/* Fixed Navbar */}
-          <Navbar />
-          
-          {/* Main Content with top padding for fixed navbar */}
-          <main className="flex-1 p-4 md:p-6 pt-24">
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/doctors' element={<Doctors />} />
-              <Route path='/doctors/:speciality' element={<Doctors />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/about' element={<About />} />
-              <Route path='/contact' element={<Contact />} />
-              <Route path='/appointment/:docId' element={<Appointment />} />
-              <Route path='/my-appointments' element={<MyAppointments />} />
-              <Route path='/my-profile' element={<MyProfile />} />
-              <Route path='/verify' element={<Verify />} />
-              <Route path='/privacy-policy' element={<PrivacyPolicy />} />
-              <Route path='/terms-of-service' element={<TermsOfService />} />
-              <Route path='/cookie-policy' element={<CookiePolicy />} />
-              <Route path='/demo' element={<Demo />} />
-            </Routes>
-          </main>
-          
-          {/* Footer */}
-          <Footer />
-        </div>
-      </div>
+      {/* Fixed Navbar */}
+      <Navbar />
+      
+      {/* Main Content with top padding for fixed navbar */}
+      <main className="pt-24">
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/doctors' element={<Doctors />} />
+          <Route path='/doctors/:speciality' element={<Doctors />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/appointment/:docId' element={<Appointment />} />
+          <Route path='/my-appointments' element={<MyAppointments />} />
+          <Route path='/my-profile' element={<MyProfile />} />
+          <Route path='/verify' element={<Verify />} />
+          <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+          <Route path='/terms-of-service' element={<TermsOfService />} />
+          <Route path='/cookie-policy' element={<CookiePolicy />} />
+          <Route path='/demo' element={<Demo />} />
+        </Routes>
+      </main>
+      
+      {/* Footer */}
+      <Footer />
     </div>
   )
 }
