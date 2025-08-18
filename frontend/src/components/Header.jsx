@@ -2,10 +2,27 @@ import React from 'react'
 import { assets } from "../assets/assets_frontend/assets";
 import { motion } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate = useNavigate();
+  
   return (
    <div className='relative rounded-3xl bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500 shadow-2xl px-6 md:px-12 lg:px-20'>
+
+  {/* Watch Demo Button - Bottom Right Corner */}
+  <motion.button
+    initial={{ opacity: 0, scale: 0.8 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.6, delay: 0.8 }}
+    onClick={() => navigate('/demo')}
+    className='absolute bottom-6 right-6 z-30 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white px-3 py-1.5 rounded-full font-medium text-xs shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-110 active:scale-95 flex items-center gap-1.5'
+  >
+    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    Demo
+  </motion.button>
 
   {/* Background Floating Blobs */}
   <div className='absolute inset-0 overflow-hidden pointer-events-none'>
@@ -81,22 +98,43 @@ const Header = () => {
           </motion.a>
         </motion.div>
 
-        {/* Right Section */}
+        {/* Right Section - Natural Integration */}
         <motion.div 
           initial={{ opacity: 0, x: 50 }} 
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
           className='md:w-1/2 relative flex justify-center md:justify-end items-end mt-12 md:mt-0'
         >
-          <motion.img 
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className='w-full max-w-lg drop-shadow-2xl rounded-3xl'
-            src={assets.header_img} 
-            alt="Header" 
-          />
-          {/* Glow Behind Image */}
-          <div className='absolute inset-0 rounded-3xl bg-gradient-to-t from-blue-400/30 to-transparent blur-2xl -z-10'></div>
+          {/* Header Image with Logo Overlay */}
+          <div className='relative'>
+            {/* Logo naturally positioned as a watermark/overlay */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className='absolute -top-4 -right-4 z-20'
+            >
+              <div className='bg-white/90 backdrop-blur-sm rounded-xl p-2 shadow-lg'>
+                <img 
+                  className='w-16 h-auto' 
+                  src={assets.logo} 
+                  alt="DocSchedule" 
+                />
+              </div>
+            </motion.div>
+
+            {/* Main Header Image */}
+            <motion.img 
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className='w-full max-w-lg drop-shadow-2xl rounded-3xl'
+              src={assets.header_img} 
+              alt="Header" 
+            />
+            
+            {/* Glow Behind Image */}
+            <div className='absolute inset-0 rounded-3xl bg-gradient-to-t from-blue-400/30 to-transparent blur-2xl -z-10'></div>
+          </div>
         </motion.div>
       </div>
     </div>
