@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Sidebar from './components/Sidebar'
-import Navbar from './components/Navbar'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Doctors from './pages/Doctors'
@@ -40,11 +39,8 @@ const App = () => {
       {/* Main Content Area */}
       <div className={`flex-1 transition-all duration-300 ${isMobile ? 'ml-0' : 'ml-72'}`}>
         <div className="min-h-screen flex flex-col">
-          {/* Fixed Navbar */}
-          <Navbar />
-          
-          {/* Main Content with top padding for fixed navbar */}
-          <main className="flex-1 p-4 md:p-6 pt-24">
+          {/* Main Content without top navbar padding */}
+          <main className="flex-1 p-4 md:p-6">
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/doctors' element={<Doctors />} />
