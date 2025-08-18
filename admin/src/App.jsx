@@ -15,7 +15,9 @@ import DoctorAppointments from './pages/Doctor/DoctorAppointments';
 import DoctorDashboard from './pages/Doctor/DoctorDashboard';
 import DoctorProfile from './pages/Doctor/DoctorProfile';
 import Homepage from './pages/Admin/HomePage';
+import AdminNewsManager from './pages/Admin/AdminNewsManager';
 import AppointmentDetails from './pages/Admin/AppointmentDetails';
+import AdminNewsList from './pages/Admin/AdminNewsList';
 const App = () => {
 
   const { dToken } = useContext(DoctorContext)
@@ -30,6 +32,8 @@ const App = () => {
         <div className='ml-80 flex-1'>
           <Routes>
             <Route path='/' element={<Homepage/>} />
+            <Route path='/news' element={<AdminNewsManager/>} />
+             <Route path='/newslist' element={<AdminNewsList/>} />
             <Route path='/admin-dashboard' element={<Dashboard />} />
             <Route path='/all-appointments' element={<AllAppointments />} />
             <Route path='/add-doctor' element={<AddDoctor />} />
