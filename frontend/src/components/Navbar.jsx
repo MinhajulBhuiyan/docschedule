@@ -27,7 +27,7 @@ React.useEffect(() => {
   return () => document.removeEventListener("click", handleClickOutside);
 }, []);
   return (
-    <div className='relative overflow-visible bg-white shadow-lg border-b border-gray-100 z-50'>
+    <div className='fixed top-0 left-0 right-0 overflow-visible bg-white shadow-lg border-b border-gray-100 z-50'>
 
       {/* Subtle Background Elements */}
       <div className='absolute inset-0 bg-gradient-to-r from-blue-50/30 to-purple-50/30'></div>

@@ -27,17 +27,19 @@ const App = () => {
       <Navbar />
       <div className='flex items-start'>
         <Sidebar />
-        <Routes>
-          <Route path='/' element={<Homepage/>} />
-          <Route path='/admin-dashboard' element={<Dashboard />} />
-          <Route path='/all-appointments' element={<AllAppointments />} />
-          <Route path='/add-doctor' element={<AddDoctor />} />
-          <Route path='/doctor-list' element={<DoctorsList />} />
-          <Route path='/doctor-dashboard' element={<DoctorDashboard />} />
-          <Route path='/doctor-appointments' element={<DoctorAppointments />} />
-          <Route path='/doctor-profile' element={<DoctorProfile />} />
-           <Route path="/appointments/:id" element={<AppointmentDetails />} />
-        </Routes>
+        <div className='ml-80 flex-1'>
+          <Routes>
+            <Route path='/' element={<Homepage/>} />
+            <Route path='/admin-dashboard' element={<Dashboard />} />
+            <Route path='/all-appointments' element={<AllAppointments />} />
+            <Route path='/add-doctor' element={<AddDoctor />} />
+            <Route path='/doctor-list' element={<DoctorsList />} />
+            <Route path='/doctor-dashboard' element={<DoctorDashboard />} />
+            <Route path='/doctor-appointments' element={<DoctorAppointments />} />
+            <Route path='/doctor-profile' element={<DoctorProfile />} />
+             <Route path="/appointments/:id" element={<AppointmentDetails />} />
+          </Routes>
+        </div>
       </div>
     </div>
   ) : (
