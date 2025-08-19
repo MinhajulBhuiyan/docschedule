@@ -278,20 +278,7 @@ const DoctorsList = () => {
                   >
                     <FaEye /> View Profile
                   </button>
-                  <button
-                    onClick={() => handleEditDoctor(doctor._id)}
-                    className="px-4 py-2 bg-gray-600 text-white text-sm font-semibold rounded-lg hover:bg-gray-700 transition-all duration-300"
-                    title="Edit Doctor"
-                  >
-                    <FaEdit />
-                  </button>
-                  <button
-                    onClick={() => handleDeleteDoctor(doctor._id)}
-                    className="px-4 py-2 bg-red-600 text-white text-sm font-semibold rounded-lg hover:bg-red-700 transition-all duration-300"
-                    title="Delete Doctor"
-                  >
-                    <FaTrash />
-                  </button>
+                  {/* Removed non-working Edit/Delete buttons */}
                 </div>
               </div>
             </div>
