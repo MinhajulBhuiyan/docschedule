@@ -16,12 +16,12 @@ const Doctors = () => {
 
   // List of specialities with icons
   const categories = [
-    { name: "General physician", icon: "👨‍⚕️", color: "blue" },
+    { name: "General Physician", icon: "🩺", color: "blue" },
     { name: "Gynecologist", icon: "👩‍⚕️", color: "pink" },
-    { name: "Dermatologist", icon: "🔬", color: "purple" },
-    { name: "Pediatricians", icon: "👶", color: "green" },
-    { name: "Neurologist", icon: "🧠", color: "indigo" },
-    { name: "Gastroenterologist", icon: "🏥", color: "teal" }
+    { name: "Dermatologist", icon: "🧴", color: "green" },
+    { name: "Pediatricians", icon: "👶", color: "yellow" },
+    { name: "Neurologist", icon: "🧠", color: "purple" },
+    { name: "Gastroenterologist", icon: "🫄", color: "indigo" }
   ]
 
   // Apply filters and sorting
@@ -85,10 +85,10 @@ const Doctors = () => {
     const styles = {
       blue: 'bg-blue-100 border-blue-300 text-blue-700',
       pink: 'bg-pink-100 border-pink-300 text-pink-700',
-      purple: 'bg-purple-100 border-purple-300 text-purple-700',
       green: 'bg-green-100 border-green-300 text-green-700',
-      indigo: 'bg-indigo-100 border-indigo-300 text-indigo-700',
-      teal: 'bg-teal-100 border-teal-300 text-teal-700'
+      yellow: 'bg-yellow-100 border-yellow-300 text-yellow-700',
+      purple: 'bg-purple-100 border-purple-300 text-purple-700',
+      indigo: 'bg-indigo-100 border-indigo-300 text-indigo-700'
     }
     return styles[color] || 'bg-blue-100 border-blue-300 text-blue-700'
   }
@@ -120,10 +120,10 @@ const Doctors = () => {
             <span className={`px-3 py-2 rounded-full text-xs font-bold text-white shadow-lg bg-gradient-to-r ${
               categoryColor === 'blue' ? 'from-blue-500 to-blue-600' :
               categoryColor === 'pink' ? 'from-pink-500 to-pink-600' :
-              categoryColor === 'purple' ? 'from-purple-500 to-purple-600' :
               categoryColor === 'green' ? 'from-green-500 to-green-600' :
+              categoryColor === 'yellow' ? 'from-yellow-500 to-yellow-600' :
+              categoryColor === 'purple' ? 'from-purple-500 to-purple-600' :
               categoryColor === 'indigo' ? 'from-indigo-500 to-indigo-600' :
-              categoryColor === 'teal' ? 'from-teal-500 to-teal-600' :
               'from-blue-500 to-blue-600'
             }`}>
               {doc.speciality}
@@ -168,10 +168,10 @@ const Doctors = () => {
             <div className={`text-center p-3 rounded-xl border-2 transition-all duration-300 ${
               categoryColor === 'blue' ? 'bg-blue-50 border-blue-200' :
               categoryColor === 'pink' ? 'bg-pink-50 border-pink-200' :
-              categoryColor === 'purple' ? 'bg-purple-50 border-purple-200' :
               categoryColor === 'green' ? 'bg-green-50 border-green-200' :
+              categoryColor === 'yellow' ? 'bg-yellow-50 border-yellow-200' :
+              categoryColor === 'purple' ? 'bg-purple-50 border-purple-200' :
               categoryColor === 'indigo' ? 'bg-indigo-50 border-indigo-200' :
-              categoryColor === 'teal' ? 'bg-teal-50 border-teal-200' :
               'bg-blue-50 border-blue-200'
             }`}>
               <p className="text-2xl font-bold text-gray-800">{doc.experience || 'N/A'}</p>
@@ -209,10 +209,10 @@ const Doctors = () => {
           <button className={`w-full font-bold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg text-white bg-gradient-to-r ${
             categoryColor === 'blue' ? 'from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800' :
             categoryColor === 'pink' ? 'from-pink-600 to-pink-700 hover:from-pink-700 hover:to-pink-800' :
-            categoryColor === 'purple' ? 'from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800' :
             categoryColor === 'green' ? 'from-green-600 to-green-700 hover:from-green-700 hover:to-green-800' :
+            categoryColor === 'yellow' ? 'from-yellow-600 to-yellow-700 hover:from-yellow-700 hover:to-yellow-800' :
+            categoryColor === 'purple' ? 'from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800' :
             categoryColor === 'indigo' ? 'from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800' :
-            categoryColor === 'teal' ? 'from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800' :
             'from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800'
           }`}>
             <span className="flex items-center justify-center gap-2">
@@ -324,10 +324,10 @@ const Doctors = () => {
             <button className={`px-6 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md text-white font-bold bg-gradient-to-r ${
               categoryColor === 'blue' ? 'from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800' :
               categoryColor === 'pink' ? 'from-pink-600 to-pink-700 hover:from-pink-700 hover:to-pink-800' :
-              categoryColor === 'purple' ? 'from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800' :
               categoryColor === 'green' ? 'from-green-600 to-green-700 hover:from-green-700 hover:to-green-800' :
+              categoryColor === 'yellow' ? 'from-yellow-600 to-yellow-700 hover:from-yellow-700 hover:to-yellow-800' :
+              categoryColor === 'purple' ? 'from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800' :
               categoryColor === 'indigo' ? 'from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800' :
-              categoryColor === 'teal' ? 'from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800' :
               'from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800'
             }`}>
               <span className="flex items-center gap-2">
@@ -368,7 +368,9 @@ const Doctors = () => {
               transition={{ delay: 0.1 }}
               className="inline-flex items-center gap-3 mb-6 bg-gradient-to-r from-blue-100 to-indigo-100 px-8 py-3 rounded-full border border-blue-200 shadow-sm"
             >
-              <span className="text-2xl">🏥</span>
+              <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m0 0H7m2 0v-5a2 2 0 012-2h2a2 2 0 012 2v5m-6 0V9a2 2 0 012-2h2a2 2 0 012 2v8" />
+              </svg>
               <span className="text-blue-700 font-bold uppercase tracking-wide text-sm">Healthcare Professionals</span>
             </motion.div>
             
@@ -425,8 +427,10 @@ const Doctors = () => {
           <div className="flex flex-col lg:flex-row gap-6">
             {/* Search Input */}
             <div className="flex-1">
-              <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                <span className="text-blue-500">🔍</span>
+              <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
+                <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
                 Search Doctors
               </label>
               <div className="relative">
@@ -437,16 +441,20 @@ const Doctors = () => {
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 text-gray-700 placeholder-gray-400"
                 />
-                <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg">
-                  🔍
+                <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
                 </span>
               </div>
             </div>
 
             {/* Sort Dropdown */}
             <div className="lg:w-48">
-              <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                <span className="text-purple-500">📊</span>
+              <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
+                <svg className="w-4 h-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
                 Sort By
               </label>
               <select
@@ -467,8 +475,11 @@ const Doctors = () => {
 
             {/* View Mode Toggle */}
             <div className="lg:w-32">
-              <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                <span className="text-green-500">👁️</span>
+              <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
+                <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
                 View
               </label>
               <div className="flex bg-gray-100 rounded-xl p-1">

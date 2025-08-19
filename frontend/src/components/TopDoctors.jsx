@@ -7,42 +7,29 @@ const TopDoctors = () => {
     const navigate = useNavigate()
     const { doctors } = useContext(AppContext)
 
-    return (
-        <div className='relative overflow-hidden bg-gradient-to-b from-gray-50 to-white py-24 px-4'>
-            {/* Enhanced Background Elements */}
-            <div className='absolute inset-0 overflow-hidden'>
-                <motion.div 
-                    animate={{ 
-                        y: [0, 20, 0], 
-                        x: [0, 15, 0],
-                        scale: [1, 1.1, 1],
-                        rotate: [0, 5, 0]
-                    }}
-                    transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-                    className='absolute top-20 right-1/4 w-64 h-64 bg-gradient-to-br from-blue-100/60 to-indigo-100/40 blur-3xl'
-                />
-                <motion.div 
-                    animate={{ 
-                        y: [0, -25, 0], 
-                        x: [0, -20, 0],
-                        scale: [1, 1.2, 1],
-                        rotate: [0, -8, 0]
-                    }}
-                    transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-                    className='absolute bottom-32 left-1/5 w-48 h-48 bg-gradient-to-br from-purple-100/50 to-blue-100/60 blur-3xl'
-                />
-                <motion.div 
-                    animate={{ 
-                        y: [0, 30, 0], 
-                        scale: [1, 1.3, 1],
-                        opacity: [0.3, 0.6, 0.3]
-                    }}
-                    transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-                    className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-cyan-100/40 to-blue-100/50 blur-2xl'
-                />
-            </div>
+    // Define color themes for each specialty
+    const specialtyColors = {
+        'General Physician': { bg: 'bg-blue-50', text: 'text-blue-600', hoverText: 'text-blue-700', border: 'border-blue-100', hoverBorder: 'border-blue-200' },
+        'Gynecologist': { bg: 'bg-pink-50', text: 'text-pink-600', hoverText: 'text-pink-700', border: 'border-pink-100', hoverBorder: 'border-pink-200' },
+        'Dermatologist': { bg: 'bg-green-50', text: 'text-green-600', hoverText: 'text-green-700', border: 'border-green-100', hoverBorder: 'border-green-200' },
+        'Pediatricians': { bg: 'bg-yellow-50', text: 'text-yellow-600', hoverText: 'text-yellow-700', border: 'border-yellow-100', hoverBorder: 'border-yellow-200' },
+        'Neurologist': { bg: 'bg-purple-50', text: 'text-purple-600', hoverText: 'text-purple-700', border: 'border-purple-100', hoverBorder: 'border-purple-200' },
+        'Gastroenterologist': { bg: 'bg-indigo-50', text: 'text-indigo-600', hoverText: 'text-indigo-700', border: 'border-indigo-100', hoverBorder: 'border-indigo-200' }
+    }
 
-            <div className='max-w-7xl mx-auto relative z-10'>
+    // Sort doctors by experience (extract number from experience string) and get top 8
+    const getExperienceValue = (experience) => {
+        const match = experience.match(/(\d+)/)
+        return match ? parseInt(match[1]) : 0
+    }
+
+    const topDoctorsByExperience = doctors
+        .sort((a, b) => getExperienceValue(b.experience) - getExperienceValue(a.experience))
+        .slice(0, 8)
+
+    return (
+        <div className='relative overflow-hidden bg-white py-24 px-4'>
+            <div className='max-w-7xl mx-auto'>
                 {/* Enhanced Header Section */}
                 <motion.div 
                     initial={{ opacity: 0, y: 40 }}
@@ -50,17 +37,6 @@ const TopDoctors = () => {
                     transition={{ duration: 1, ease: "easeOut" }}
                     className='text-center mb-20'
                 >
-                    {/* Subtitle Badge */}
-                    <motion.div 
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className='inline-flex items-center gap-2 bg-white border border-blue-100 shadow-sm px-6 py-2 mb-6'
-                    >
-                        <div className='w-2 h-2 bg-blue-500'></div>
-                        <span className='text-blue-700 text-sm font-semibold uppercase tracking-wider'>Featured Specialists</span>
-                    </motion.div>
-
                     <motion.h1 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -86,9 +62,11 @@ const TopDoctors = () => {
                     initial={{ opacity: 0, y: 60 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.5 }}
-                    className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-8 mb-20'
+                    className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-20'
                 >
-                    {doctors.slice(0, 10).map((item, index) => (
+                    {topDoctorsByExperience.map((item, index) => {
+                        const colorTheme = specialtyColors[item.speciality] || specialtyColors['General Physician']
+                        return (
                         <motion.div
                             initial={{ opacity: 0, y: 40 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -98,7 +76,7 @@ const TopDoctors = () => {
                         >
                             <div 
                                 onClick={() => { navigate(`/appointment/${item._id}`); scrollTo(0, 0) }} 
-                                className='bg-white border border-gray-100 shadow-sm overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-700 hover:-translate-y-3 hover:border-blue-200 h-full flex flex-col relative before:absolute before:inset-0 before:bg-gradient-to-t before:from-blue-50/0 before:to-blue-50/20 before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100'
+                                className={`bg-white border ${colorTheme.border} shadow-sm overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-700 hover:-translate-y-3 hover:${colorTheme.hoverBorder} h-full flex flex-col relative before:absolute before:inset-0 before:bg-gradient-to-t before:from-blue-50/0 before:to-blue-50/20 before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100`}
                             >
                                 {/* Enhanced Image Container */}
                                 <div className='relative overflow-hidden aspect-square'>
@@ -135,10 +113,10 @@ const TopDoctors = () => {
                                 {/* Enhanced Content Container */}
                                 <div className='p-6 flex-1 flex flex-col justify-between relative z-10'>
                                     <div>
-                                        <h3 className='text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300 line-clamp-1'>
+                                        <h3 className='text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300 line-clamp-1'>
                                             {item.name}
                                         </h3>
-                                        <p className='text-gray-600 text-sm font-medium mb-4 line-clamp-1 group-hover:text-gray-700 transition-colors duration-300'>
+                                        <p className={`${colorTheme.text} text-sm font-bold mb-4 line-clamp-1 group-hover:${colorTheme.hoverText} transition-colors duration-300 ${colorTheme.bg} px-3 py-1 rounded-full text-center border ${colorTheme.border}`}>
                                             {item.speciality}
                                         </p>
                                     </div>
@@ -155,7 +133,8 @@ const TopDoctors = () => {
                                 </div>
                             </div>
                         </motion.div>
-                    ))}
+                        )
+                    })}
                 </motion.div>
                 
                 {/* Enhanced CTA Button */}
