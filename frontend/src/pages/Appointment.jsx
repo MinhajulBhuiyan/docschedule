@@ -654,26 +654,110 @@ const Appointment = () => {
                     </div>
                 </div>
 
-                {/* Health Insurance Section */}
-                <div className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100/50 backdrop-blur-sm mb-8">
-                    <div className="text-center mb-8">
-                        <h3 className="text-3xl font-bold text-gray-800 mb-4">Health Insurance Partners</h3>
-                        <p className="text-xl text-gray-600">We accept major health insurance plans to make healthcare more accessible</p>
-                    </div>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {['Blue Cross', 'Aetna', 'Cigna', 'UnitedHealth'].map((insurance, index) => (
-                            <div key={index} className="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300">
-                                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                                    </svg>
-                                </div>
-                                <h4 className="text-lg font-semibold text-gray-800 text-center">{insurance}</h4>
-                                <p className="text-gray-600 text-sm text-center mt-2">Accepted</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                                 {/* Health Insurance Section */}
+                 <div className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 rounded-3xl shadow-2xl p-8 border border-blue-100/50 backdrop-blur-sm mb-8 relative overflow-hidden">
+                     {/* Background Pattern */}
+                     <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-400/10 to-transparent rounded-full blur-3xl"></div>
+                     <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-indigo-400/10 to-transparent rounded-full blur-3xl"></div>
+                     
+                     <div className="relative">
+                         <div className="text-center mb-12">
+                             <div className="inline-flex items-center gap-3 mb-4">
+                                 <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                 <h3 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Health Insurance Partners</h3>
+                                 <div className="w-3 h-3 bg-indigo-500 rounded-full"></div>
+                             </div>
+                             <p className="text-xl text-gray-600 max-w-3xl mx-auto">We accept major health insurance plans to make healthcare more accessible and affordable for all our patients</p>
+                         </div>
+                         
+                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                             {[
+                                 {
+                                     name: "Blue Cross",
+                                     description: "Blue Cross Blue Shield",
+                                     color: "from-blue-500 to-blue-600",
+                                     bgColor: "from-blue-50 to-blue-100",
+                                     borderColor: "border-blue-200",
+                                     icon: (
+                                         <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                             <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                                         </svg>
+                                     )
+                                 },
+                                 {
+                                     name: "Aetna",
+                                     description: "Aetna Health Plans",
+                                     color: "from-green-500 to-emerald-600",
+                                     bgColor: "from-green-50 to-emerald-100",
+                                     borderColor: "border-green-200",
+                                     icon: (
+                                         <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                             <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                         </svg>
+                                     )
+                                 },
+                                 {
+                                     name: "Cigna",
+                                     description: "Cigna Healthcare",
+                                     color: "from-purple-500 to-purple-600",
+                                     bgColor: "from-purple-50 to-purple-100",
+                                     borderColor: "border-purple-200",
+                                     icon: (
+                                         <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                             <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                         </svg>
+                                     )
+                                 },
+                                 {
+                                     name: "UnitedHealth",
+                                     description: "UnitedHealth Group",
+                                     color: "from-red-500 to-red-600",
+                                     bgColor: "from-red-50 to-red-100",
+                                     borderColor: "border-red-200",
+                                     icon: (
+                                         <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                             <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+                                         </svg>
+                                     )
+                                 }
+                             ].map((insurance, index) => (
+                                 <div key={index} className="group relative">
+                                     <div className={`bg-gradient-to-br ${insurance.bgColor} rounded-3xl p-8 border-2 ${insurance.borderColor} hover:border-blue-400 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20`}>
+                                         {/* Icon Container */}
+                                         <div className={`w-20 h-20 bg-gradient-to-br ${insurance.color} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300`}>
+                                             {insurance.icon}
+                                         </div>
+                                         
+                                         {/* Content */}
+                                         <div className="text-center">
+                                             <h4 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">{insurance.name}</h4>
+                                             <p className="text-gray-600 text-sm mb-4">{insurance.description}</p>
+                                             
+                                             {/* Status Badge */}
+                                             <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-md border border-gray-100">
+                                                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                                 <span className="text-sm font-medium text-green-700">Accepted</span>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     
+                                     {/* Hover Effect Overlay */}
+                                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                                 </div>
+                             ))}
+                         </div>
+                         
+                         {/* Bottom Info */}
+                         <div className="mt-12 text-center">
+                             <div className="inline-flex items-center gap-3 bg-white px-6 py-3 rounded-full shadow-lg border border-blue-100">
+                                 <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                                 </svg>
+                                 <span className="text-sm font-medium text-gray-700">Contact us to verify your specific coverage and benefits</span>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
 
                 {/* Patient Testimonials */}
                 <div className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100/50 backdrop-blur-sm mb-8">
