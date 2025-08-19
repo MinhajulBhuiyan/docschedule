@@ -158,9 +158,12 @@ const MyProfile = () => {
                                     ) : (
                                         <button 
                                             onClick={() => setIsEdit(true)}
-                                            className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                                            className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2"
                                         >
-                                            ✏️ Edit Profile
+                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                            </svg>
+                                            Edit Profile
                                         </button>
                                     )}
                                 </div>
@@ -180,7 +183,10 @@ const MyProfile = () => {
                             >
                                 <div className="bg-blue-50 rounded-2xl p-6">
                                     <h3 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-                                        📞 Contact Information
+                                        <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                        </svg>
+                                        Contact Information
                                     </h3>
                                     <div className="space-y-4">
                                         <div className="flex items-center gap-3">
@@ -239,7 +245,10 @@ const MyProfile = () => {
                             >
                                 <div className="bg-purple-50 rounded-2xl p-6">
                                     <h3 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-                                        👤 Basic Information
+                                        <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                        </svg>
+                                        Basic Information
                                     </h3>
                                     <div className="space-y-4">
                                         <div className="flex items-center gap-3">
@@ -278,7 +287,10 @@ const MyProfile = () => {
                                 {/* Account Stats */}
                                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6">
                                     <h3 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-                                        📊 Account Overview
+                                        <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                        </svg>
+                                        Account Overview
                                     </h3>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="text-center p-4 bg-white rounded-xl">
