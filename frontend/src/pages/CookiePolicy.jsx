@@ -163,7 +163,7 @@ const CookiePolicy = () => {
                 <div className="space-y-3 text-gray-600">
                   <p>If you have any questions about our use of cookies or this Cookie Policy, please contact us:</p>
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <p><strong>Email:</strong> privacy@prescripto.com</p>
+                    <p><strong>Email:</strong> privacy@docschedule.com</p>
                     <p><strong>Phone:</strong> +1-212-456-7890</p>
                     <p><strong>Address:</strong> Uttara Dhaka, Bangladesh</p>
                   </div>
@@ -173,7 +173,7 @@ const CookiePolicy = () => {
 
             <div className="mt-12 pt-8 border-t border-gray-200">
               <p className="text-sm text-gray-500 text-center">
-                This Cookie Policy explains how Prescripto uses cookies and similar technologies to provide, 
+                This Cookie Policy explains how docschedule uses cookies and similar technologies to provide, 
                 customize, evaluate, improve, promote, and protect our services. By using our website, 
                 you agree to our use of cookies as described in this policy.
               </p>

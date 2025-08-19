@@ -1,11 +1,12 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { AppContext } from '../context/AppContext'
 import axios from 'axios'
 import { toast } from 'react-toastify'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const Login = () => {
-    const [state, setState] = useState('Sign Up')
+    const location = useLocation()
+    const [state, setState] = useState('Login')
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -20,6 +21,17 @@ const Login = () => {
 
     const navigate = useNavigate()
     const { backendUrl, setToken } = useContext(AppContext)
+
+    // Check URL parameter to determine initial state
+    useEffect(() => {
+        const urlParams = new URLSearchParams(location.search)
+        const mode = urlParams.get('mode')
+        if (mode === 'signup') {
+            setState('Sign Up')
+        } else {
+            setState('Login')
+        }
+    }, [location])
 
     const resetForm = () => {
         setName('')

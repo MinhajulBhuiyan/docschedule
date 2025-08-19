@@ -28,7 +28,7 @@ const PrivacyPolicy = () => {
               Privacy Policy
             </h2>
             <p className="text-gray-600 mb-6">
-              <strong>Last updated:</strong> December 2024
+              <strong>Last updated:</strong> February 2025
             </p>
 
             <div className="space-y-8">
@@ -100,8 +100,8 @@ const PrivacyPolicy = () => {
                 <div className="space-y-3 text-gray-600">
                   <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <p><strong>Email:</strong> privacy@prescripto.com</p>
-                    <p><strong>Phone:</strong> +1-212-456-7890</p>
+                    <p><strong>Email:</strong> privacy@docschedule.com</p>
+                    <p><strong>Phone:</strong> +8801875602306</p>
                     <p><strong>Address:</strong> Uttara Dhaka, Bangladesh</p>
                   </div>
                 </div>

@@ -28,100 +28,109 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className='fixed top-0 left-0 right-0 overflow-visible bg-white shadow-lg border-b border-gray-100 z-50'>
-
-      {/* Subtle Background Elements - Matching Admin Colors */}
-      <div className='absolute inset-0 bg-gradient-to-r from-blue-50/30 to-blue-100/30'></div>
-      <div className='absolute top-0 right-20 w-32 h-32 bg-blue-200/20 rounded-full blur-2xl'></div>
-      <div className='absolute top-0 left-20 w-24 h-24 bg-blue-300/20 rounded-full blur-2xl'></div>
-
-      <div className='relative z-10 flex items-center justify-between py-6 px-8'>
-        {/* Logo */}
-        <div className='cursor-pointer hover:scale-105 transition-transform duration-300'>
-          <img onClick={() => navigate('/')} className='w-44' src={assets.logo} alt="Logo" />
+    <div className='fixed top-0 left-0 right-0 bg-white shadow-sm border-b border-gray-200 z-50'>
+      <div className='max-w-7xl mx-auto flex items-center justify-between py-4 px-6'>
+        {/* Logo Section */}
+        <div className='flex items-center gap-4'>
+          <img 
+            onClick={() => navigate('/')} 
+            className='w-36 cursor-pointer hover:opacity-80 transition-opacity' 
+            src={assets.logo} 
+            alt="DocSchedule" 
+          />
+          <div className='hidden lg:flex items-center px-3 py-1.5 rounded-md bg-green-50 border border-green-200'>
+            <div className='w-2 h-2 bg-green-500 rounded-full mr-2'></div>
+            <span className='text-sm font-medium text-green-700'>
+              Patient Portal
+            </span>
+          </div>
         </div>
 
         {/* Desktop Navigation */}
-        <ul className='md:flex items-center gap-8 font-semibold hidden'>
-          <NavLink to='/' className='group relative'>
-            <li className='py-3 px-6 rounded-xl text-gray-700 transition-all duration-300 group-hover:text-white group-hover:bg-blue-600 hover:shadow-lg hover:-translate-y-0.5'>
-              HOME
-            </li>
-            <div className='absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full w-0 group-hover:w-full transition-all duration-300'></div>
+        <ul className='hidden md:flex items-center gap-6'>
+          <NavLink to='/' className={({ isActive }) => 
+            `text-sm font-medium px-3 py-2 rounded-md transition-colors duration-200 ${
+              isActive ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+            }`
+          }>
+            <li>HOME</li>
           </NavLink>
           
-          <NavLink to='/doctors' className='group relative'>
-            <li className='py-3 px-6 rounded-xl text-gray-700 transition-all duration-300 group-hover:text-white group-hover:bg-blue-600 hover:shadow-lg hover:-translate-y-0.5'>
-              ALL DOCTORS
-            </li>
-            <div className='absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full w-0 group-hover:w-full transition-all duration-300'></div>
+          <NavLink to='/doctors' className={({ isActive }) => 
+            `text-sm font-medium px-3 py-2 rounded-md transition-colors duration-200 ${
+              isActive ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+            }`
+          }>
+            <li>ALL DOCTORS</li>
           </NavLink>
           
-          <NavLink to='/about' className='group relative'>
-            <li className='py-3 px-6 rounded-xl text-gray-700 transition-all duration-300 group-hover:text-white group-hover:bg-blue-600 hover:shadow-lg hover:-translate-y-0.5'>
-              ABOUT
-            </li>
-            <div className='absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full w-0 group-hover:w-full transition-all duration-300'></div>
+          <NavLink to='/about' className={({ isActive }) => 
+            `text-sm font-medium px-3 py-2 rounded-md transition-colors duration-200 ${
+              isActive ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+            }`
+          }>
+            <li>ABOUT</li>
           </NavLink>
           
-          <NavLink to='/contact' className='group relative'>
-            <li className='py-3 px-6 rounded-xl text-gray-700 transition-all duration-300 group-hover:text-white group-hover:bg-blue-600 hover:shadow-lg hover:-translate-y-0.5'>
-              CONTACT
-            </li>
-            <div className='absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full w-0 group-hover:w-full transition-all duration-300'></div>
+          <NavLink to='/contact' className={({ isActive }) => 
+            `text-sm font-medium px-3 py-2 rounded-md transition-colors duration-200 ${
+              isActive ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+            }`
+          }>
+            <li>CONTACT</li>
           </NavLink>
         </ul>
 
         {/* Mobile Menu Button */}
         <button
           onClick={() => setShowMenu(!showMenu)}
-          className='md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200'
+          className='md:hidden p-2 rounded-md hover:bg-gray-100 transition-colors'
         >
-          <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
 
         {/* Right Side Actions */}
-        <div className='flex items-center gap-6'>
+        <div className='hidden md:flex items-center gap-3'>
           {!token ? (
-            <div className='flex items-center gap-4'>
-              <NavLink to='/login' className='text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200'>
+            <div className='flex items-center gap-3'>
+              <NavLink to='/login' className='text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors px-3 py-2'>
                 Login
               </NavLink>
-              <NavLink to='/login' className='bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2.5 rounded-full font-medium hover:shadow-lg transition-all duration-300 hover:scale-105'>
-                Get Started
+              <NavLink to='/login?mode=signup' className='bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-blue-700 transition-colors'>
+                Sign Up
               </NavLink>
             </div>
           ) : (
-            <div className='flex items-center gap-4'>
-              <NavLink to='/my-appointments' className='text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200'>
+            <div className='flex items-center gap-3'>
+              <NavLink to='/my-appointments' className='text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors px-3 py-2'>
                 My Appointments
               </NavLink>
               <div className="profile-menu relative">
                 <button
                   onClick={() => setShowDropdown(!showDropdown)}
-                  className='flex items-center gap-2 bg-gradient-to-r from-blue-50 to-blue-100 px-4 py-2 rounded-full border border-blue-200 hover:shadow-md transition-all duration-200'
+                  className='flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-gray-300 transition-colors bg-white'
                 >
                   <img 
-                    src={userData?.profilePic || assets.profile_pic} 
+                    src={userData?.image || assets.profile_pic} 
                     alt="Profile" 
-                    className='w-8 h-8 rounded-full object-cover'
+                    className='w-7 h-7 rounded-full object-cover'
                   />
-                  <span className='text-blue-800 font-medium'>{userData?.name || 'User'}</span>
-                  <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span className='text-sm font-medium text-gray-700'>{userData?.name || 'User'}</span>
+                  <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
                 
                 {showDropdown && (
-                  <div className='absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50'>
-                    <NavLink to='/my-profile' className='block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200'>
+                  <div className='absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50'>
+                    <NavLink to='/my-profile' className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors'>
                       My Profile
                     </NavLink>
                     <button 
                       onClick={logout}
-                      className='block w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200'
+                      className='block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors'
                     >
                       Logout
                     </button>
@@ -135,24 +144,45 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {showMenu && (
-        <div className='md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-100 shadow-lg'>
-          <div className='px-6 py-4 space-y-4'>
-            <NavLink to='/' className='block py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200'>
+        <div className='md:hidden bg-white border-t border-gray-200'>
+          <div className='px-6 py-4 space-y-2'>
+            <NavLink to='/' className='block py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors' onClick={() => setShowMenu(false)}>
               HOME
             </NavLink>
-            <NavLink to='/doctors' className='block py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200'>
+            <NavLink to='/doctors' className='block py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors' onClick={() => setShowMenu(false)}>
               ALL DOCTORS
             </NavLink>
-            <NavLink to='/about' className='block py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200'>
+            <NavLink to='/about' className='block py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors' onClick={() => setShowMenu(false)}>
               ABOUT
             </NavLink>
-            <NavLink to='/contact' className='block py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200'>
+            <NavLink to='/contact' className='block py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors' onClick={() => setShowMenu(false)}>
               CONTACT
             </NavLink>
             {token && (
-              <NavLink to='/my-appointments' className='block py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200'>
-                My Appointments
-              </NavLink>
+              <>
+                <NavLink to='/my-appointments' className='block py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors' onClick={() => setShowMenu(false)}>
+                  My Appointments
+                </NavLink>
+                <NavLink to='/my-profile' className='block py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors' onClick={() => setShowMenu(false)}>
+                  My Profile
+                </NavLink>
+                <button 
+                  onClick={() => { logout(); setShowMenu(false); }}
+                  className='block w-full text-left py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors'
+                >
+                  Logout
+                </button>
+              </>
+            )}
+            {!token && (
+              <div className='pt-2 border-t border-gray-200 mt-2'>
+                <NavLink to='/login' className='block py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors' onClick={() => setShowMenu(false)}>
+                  Login
+                </NavLink>
+                <NavLink to='/login?mode=signup' className='block py-2 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors' onClick={() => setShowMenu(false)}>
+                  Sign Up
+                </NavLink>
+              </div>
             )}
           </div>
         </div>

@@ -27,21 +27,88 @@ const Banner = () => {
                     initial={{ opacity: 0, x: -30 }} 
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
-                    className='md:w-1/2 flex flex-col justify-center gap-4 py-12'
+                    className='md:w-1/2 flex flex-col justify-center gap-6 py-12'
                 >
                     <div className='text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight drop-shadow-lg'>
-                        <p className='mb-2'>Book Appointment</p>
-                        <p className='text-blue-100'>With 100+ Trusted Doctors</p>
+                        <p className='mb-2'>🏥 Premium Healthcare</p>
+                        <p className='text-blue-100'>At Your Fingertips</p>
                     </div>
-                    <p className='text-blue-100/90 text-base mt-4 mb-6 max-w-sm'>Get the best healthcare experience with our verified medical professionals</p>
-                    <motion.button 
-                        whileHover={{ scale: 1.05 }} 
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => { navigate('/login'); scrollTo(0, 0) }} 
-                        className='inline-flex items-center gap-3 bg-white text-blue-800 text-base font-semibold px-8 py-3 rounded-full hover:shadow-xl transition-all duration-300 shadow-lg'
+                    
+                    <p className='text-blue-100/90 text-base mt-2 mb-6 max-w-lg'>
+                        Experience world-class medical care with verified doctors, instant booking, and comprehensive health solutions
+                    </p>
+
+                    {/* Key Features */}
+                    <div className='space-y-3'>
+                        <motion.div 
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className='flex items-center gap-3'
+                        >
+                            <div className='w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center'>
+                                <span className='text-lg'>⚡</span>
+                            </div>
+                            <span className='text-white font-medium'>Instant Appointment Booking</span>
+                        </motion.div>
+                        
+                        <motion.div 
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.4 }}
+                            className='flex items-center gap-3'
+                        >
+                            <div className='w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center'>
+                                <span className='text-lg'>👨‍⚕️</span>
+                            </div>
+                            <span className='text-white font-medium'>100+ Verified Medical Experts</span>
+                        </motion.div>
+                        
+                        <motion.div 
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.5 }}
+                            className='flex items-center gap-3'
+                        >
+                            <div className='w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center'>
+                                <span className='text-lg'>🔒</span>
+                            </div>
+                            <span className='text-white font-medium'>100% Secure & Private</span>
+                        </motion.div>
+                        
+                        <motion.div 
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.6 }}
+                            className='flex items-center gap-3'
+                        >
+                            <div className='w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center'>
+                                <span className='text-lg'>📱</span>
+                            </div>
+                            <span className='text-white font-medium'>24/7 Healthcare Support</span>
+                        </motion.div>
+                    </div>
+
+                    {/* Stats */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7 }}
+                        className='flex items-center gap-8 mt-6 pt-4 border-t border-white/20'
                     >
-                        Create Account
-                    </motion.button>
+                        <div className='text-center'>
+                            <div className='text-2xl font-bold text-white'>50K+</div>
+                            <div className='text-blue-100/80 text-sm'>Happy Patients</div>
+                        </div>
+                        <div className='text-center'>
+                            <div className='text-2xl font-bold text-white'>4.9★</div>
+                            <div className='text-blue-100/80 text-sm'>User Rating</div>
+                        </div>
+                        <div className='text-center'>
+                            <div className='text-2xl font-bold text-white'>24/7</div>
+                            <div className='text-blue-100/80 text-sm'>Available</div>
+                        </div>
+                    </motion.div>
                 </motion.div>
 
                 {/* Right Section */}

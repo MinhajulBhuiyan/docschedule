@@ -37,7 +37,7 @@ const TermsOfService = () => {
                   1. Acceptance of Terms
                 </h3>
                 <div className="space-y-3 text-gray-600">
-                  <p>By accessing and using Prescripto.com ("the Platform"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
+                  <p>By accessing and using docschedule.com ("the Platform"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
                   <p>These terms apply to all visitors, users, and others who access or use the Platform, including patients, healthcare providers, and administrators.</p>
                 </div>
               </section>
@@ -47,7 +47,7 @@ const TermsOfService = () => {
                   2. Description of Service
                 </h3>
                 <div className="space-y-3 text-gray-600">
-                  <p>Prescripto is a healthcare platform that connects patients with qualified healthcare providers for medical consultations, appointment scheduling, and health management services.</p>
+                  <p>docschedule is a healthcare platform that connects patients with qualified healthcare providers for medical consultations, appointment scheduling, and health management services.</p>
                   <p><strong>Our services include:</strong></p>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Online appointment booking and management</li>
@@ -146,8 +146,8 @@ const TermsOfService = () => {
                 <div className="space-y-3 text-gray-600">
                   <p>If you have questions about these Terms of Service, please contact us:</p>
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <p><strong>Email:</strong> legal@prescripto.com</p>
-                    <p><strong>Phone:</strong> +1-212-456-7890</p>
+                    <p><strong>Email:</strong> legal@docschedule.com</p>
+                    <p><strong>Phone:</strong> +8801875602306</p>
                     <p><strong>Address:</strong> Uttara Dhaka, Bangladesh</p>
                   </div>
                 </div>
@@ -156,7 +156,7 @@ const TermsOfService = () => {
 
             <div className="mt-12 pt-8 border-t border-gray-200">
               <p className="text-sm text-gray-500 text-center">
-                These Terms of Service constitute the entire agreement between you and Prescripto regarding the use of our Platform. 
+                These Terms of Service constitute the entire agreement between you and docschedule regarding the use of our Platform. 
                 If any provision of these Terms is found to be unenforceable, the remaining provisions will continue to be effective.
               </p>
             </div>
