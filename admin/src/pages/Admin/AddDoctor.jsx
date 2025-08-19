@@ -118,6 +118,17 @@ const AddDoctor = () => {
                                 <option value="8 Year">8 Years</option>
                                 <option value="9 Year">9 Years</option>
                                 <option value="10 Year">10 Years</option>
+                                <option value="11 Year">11 Years</option>
+                                <option value="12 Year">12 Years</option>
+                                <option value="13 Year">13 Years</option>
+                                <option value="14 Year">14 Years</option>
+                                <option value="15 Year">15 Years</option>
+                                <option value="16 Year">16 Years</option>
+                                <option value="17 Year">17 Years</option>
+                                <option value="18 Year">18 Years</option>
+                                <option value="19 Year">19 Years</option>
+                                <option value="20 Year">20 Years</option>
+                                <option value="20+ Year">20+ Years</option>
                             </select>
                         </div>
 

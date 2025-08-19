@@ -61,7 +61,7 @@ const Footer = () => {
             <div className="space-y-4">
               {[
                 { icon: '📞', title: 'Call Us', info: '+1-212-456-7890', gradient: 'from-blue-500 to-purple-500' },
-                { icon: '✉️', title: 'Email Us', info: 'prescripto@gmail.com', gradient: 'from-purple-500 to-pink-500' },
+                { icon: '✉️', title: 'Email Us', info: 'docschedule@gmail.com', gradient: 'from-purple-500 to-pink-500' },
                 { icon: '📍', title: 'Visit Us', info: '24/7 Available', gradient: 'from-green-500 to-emerald-500' }
               ].map((item, i) => (
                 <motion.div
@@ -85,7 +85,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-200 pt-8 mt-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-gray-600 text-center md:text-left">
-            © 2024 Prescripto.com — All Rights Reserved. Making healthcare accessible for everyone.
+            © 2024 Docschedule.com - All Rights Reserved. Making healthcare accessible for everyone.
           </p>
           <div className="flex gap-6 text-sm text-gray-500">
             <Link to="/privacy-policy" className="hover:text-blue-600 transition-colors duration-200">Privacy Policy</Link>
