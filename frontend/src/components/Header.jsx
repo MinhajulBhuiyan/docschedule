@@ -8,7 +8,7 @@ const Header = () => {
   const navigate = useNavigate();
   
   return (
-   <div className='relative rounded-3xl bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500 shadow-2xl px-6 md:px-12 lg:px-20'>
+   <div className='relative bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500 shadow-2xl px-6 md:px-12 lg:px-20'>
 
   {/* Watch Demo Button - Bottom Right Corner */}
   <motion.button

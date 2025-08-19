@@ -164,7 +164,7 @@ const CookiePolicy = () => {
                   <p>If you have any questions about our use of cookies or this Cookie Policy, please contact us:</p>
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <p><strong>Email:</strong> privacy@docschedule.com</p>
-                    <p><strong>Phone:</strong> +1-212-456-7890</p>
+                    <p><strong>Phone:</strong> +1-234-567-890</p>
                     <p><strong>Address:</strong> Uttara Dhaka, Bangladesh</p>
                   </div>
                 </div>

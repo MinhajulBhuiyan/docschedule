@@ -8,7 +8,7 @@ const TopDoctors = () => {
     const { doctors } = useContext(AppContext)
 
     return (
-        <div className='relative overflow-hidden flex flex-col items-center gap-6 my-16 text-gray-800 bg-gradient-to-b from-white to-gray-50 px-4'>
+        <div className='relative overflow-hidden flex flex-col items-center gap-6 mt-0 mb-16 text-gray-800 bg-gradient-to-b from-white to-gray-50 px-4'>
             {/* Background Floating Blobs */}
             <motion.div 
                 animate={{ y: [0, 20, 0], x: [0, 12, 0] }}

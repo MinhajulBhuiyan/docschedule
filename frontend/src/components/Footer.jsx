@@ -71,7 +71,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="text-sm text-gray-500">Call Us</p>
-                  <p className="font-semibold text-gray-800">+1-212-456-7890</p>
+                  <p className="font-semibold text-gray-800">+1-234-567-890</p>
                 </div>
               </div>
               

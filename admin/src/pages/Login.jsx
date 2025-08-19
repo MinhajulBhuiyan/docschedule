@@ -7,9 +7,9 @@ import { toast } from 'react-toastify'
 const Login = () => {
 
   const [state, setState] = useState('Admin')
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const backendUrl = import.meta.env.VITE_BACKEND_URL
 
@@ -18,51 +18,130 @@ const Login = () => {
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
+    setLoading(true)
 
-    if (state === 'Admin') {
-
-      const { data } = await axios.post(backendUrl + '/api/admin/login', { email, password })
-      if (data.success) {
-        setAToken(data.token)
-        localStorage.setItem('aToken', data.token)
+    try {
+      if (state === 'Admin') {
+        const { data } = await axios.post(backendUrl + '/api/admin/login', { email, password })
+        if (data.success) {
+          setAToken(data.token)
+          localStorage.setItem('aToken', data.token)
+        } else {
+          toast.error(data.message)
+        }
       } else {
-        toast.error(data.message)
+        const { data } = await axios.post(backendUrl + '/api/doctor/login', { email, password })
+        if (data.success) {
+          setDToken(data.token)
+          localStorage.setItem('dToken', data.token)
+        } else {
+          toast.error(data.message)
+        }
       }
-
-    } else {
-
-      const { data } = await axios.post(backendUrl + '/api/doctor/login', { email, password })
-      if (data.success) {
-        setDToken(data.token)
-        localStorage.setItem('dToken', data.token)
-      } else {
-        toast.error(data.message)
-      }
-
+    } catch (error) {
+      toast.error('Login failed. Please try again.')
+    } finally {
+      setLoading(false)
     }
-
   }
 
   return (
-    <form onSubmit={onSubmitHandler} className='min-h-[80vh] flex items-center'>
-      <div className='flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-96 border rounded-xl text-[#5E5E5E] text-sm shadow-lg'>
-        <p className='text-2xl font-semibold m-auto'><span className='text-primary'>{state}</span> Login</p>
-        <div className='w-full '>
-          <p>Email</p>
-          <input onChange={(e) => setEmail(e.target.value)} value={email} className='border border-[#DADADA] rounded w-full p-2 mt-1' type="email" required />
-        </div>
-        <div className='w-full '>
-          <p>Password</p>
-          <input onChange={(e) => setPassword(e.target.value)} value={password} className='border border-[#DADADA] rounded w-full p-2 mt-1' type="password" required />
-        </div>
-        <button className='bg-primary text-white w-full py-2 rounded-md text-base'>Login</button>
-        {
-          state === 'Admin'
-            ? <p>Doctor Login? <span onClick={() => setState('Doctor')} className='text-primary underline cursor-pointer'>Click here</span></p>
-            : <p>Admin Login? <span onClick={() => setState('Admin')} className='text-primary underline cursor-pointer'>Click here</span></p>
-        }
+    <div className='min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 flex items-center justify-center p-4'>
+      <div className='w-full max-w-md'>
+        <form onSubmit={onSubmitHandler} className='bg-white/70 backdrop-blur-sm border border-white/20 rounded-2xl p-8 shadow-2xl shadow-slate-200/50'>
+          
+          {/* Header */}
+          <div className='text-center mb-8'>
+            <h1 className='text-3xl font-light text-slate-800 mb-2'>
+              Welcome <span className='font-medium text-primary'>Back</span>
+            </h1>
+            <div className='flex items-center justify-center gap-1 bg-slate-100 rounded-full p-1 w-fit mx-auto'>
+              <button
+                type="button"
+                onClick={() => setState('Admin')}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  state === 'Admin' 
+                    ? 'bg-white text-primary shadow-sm' 
+                    : 'text-slate-600 hover:text-slate-800'
+                }`}
+              >
+                Admin
+              </button>
+              <button
+                type="button"
+                onClick={() => setState('Doctor')}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  state === 'Doctor' 
+                    ? 'bg-white text-primary shadow-sm' 
+                    : 'text-slate-600 hover:text-slate-800'
+                }`}
+              >
+                Doctor
+              </button>
+            </div>
+          </div>
+
+          {/* Form Fields */}
+          <div className='space-y-6'>
+            <div className='group'>
+              <label className='block text-sm font-medium text-slate-700 mb-2'>
+                Email Address
+              </label>
+              <input
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                className='w-full px-4 py-3 border border-slate-200 rounded-xl bg-white/50 focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-200 outline-none placeholder-slate-400'
+                type="email"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+
+            <div className='group'>
+              <label className='block text-sm font-medium text-slate-700 mb-2'>
+                Password
+              </label>
+              <input
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                className='w-full px-4 py-3 border border-slate-200 rounded-xl bg-white/50 focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-200 outline-none placeholder-slate-400'
+                type="password"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            disabled={loading}
+            className='w-full mt-8 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white font-medium py-3 px-4 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl hover:shadow-primary/25 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center'
+          >
+            {loading ? (
+              <div className='w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin'></div>
+            ) : (
+              `Sign in as ${state}`
+            )}
+          </button>
+
+          {/* Footer */}
+          <div className='mt-6 text-center'>
+            <p className='text-sm text-slate-600'>
+              Need to switch? 
+              <button
+                type="button"
+                onClick={() => setState(state === 'Admin' ? 'Doctor' : 'Admin')}
+                className='ml-1 text-primary hover:text-primary/80 font-medium underline transition-colors duration-200'
+              >
+                {state === 'Admin' ? 'Doctor Login' : 'Admin Login'}
+              </button>
+            </p>
+          </div>
+
+        </form>
       </div>
-    </form>
+    </div>
   )
 }
 
