@@ -145,7 +145,7 @@ const DoctorHomePage = () => {
       {/* Hero Section */}
       <div>
         <h1 className="text-3xl font-bold text-gray-800 mb-3">
-          Welcome Back, Doctor 👨‍⚕️
+          Welcome Back, Doctor
         </h1>
         <p className="text-gray-600 mb-8">
           Your personal portal for managing appointments and patient care.
