@@ -33,6 +33,24 @@ const AdminContextProvider = (props) => {
 
     }
 
+    // Update doctor details (Admin)
+    const updateDoctor = async (payload) => {
+        try {
+            const { data } = await axios.post(backendUrl + '/api/admin/update-doctor', payload, { headers: { aToken } })
+            if (data.success) {
+                toast.success(data.message)
+                getAllDoctors()
+                return true
+            } else {
+                toast.error(data.message)
+                return false
+            }
+        } catch (error) {
+            toast.error(error.message)
+            return false
+        }
+    }
+
     // Function to change doctor availablity using API
     const changeAvailability = async (docId) => {
         try {
@@ -117,6 +135,7 @@ const AdminContextProvider = (props) => {
         doctors,
         getAllDoctors,
         changeAvailability,
+        updateDoctor,
         appointments,
         getAllAppointments,
         getDashData,

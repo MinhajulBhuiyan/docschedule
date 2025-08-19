@@ -156,3 +156,54 @@ export {
     allDoctors,
     adminDashboard
 }
+
+// API to update a doctor's details (Admin only)
+const updateDoctor = async (req, res) => {
+    try {
+        const { docId } = req.body
+
+        if (!docId) {
+            return res.json({ success: false, message: 'Missing doctor id' })
+        }
+
+        const allowedFields = [
+            'name',
+            'email',
+            'speciality',
+            'degree',
+            'experience',
+            'about',
+            'fees',
+            'available',
+            'address'
+        ]
+
+        const updatePayload = {}
+        for (const key of allowedFields) {
+            if (key in req.body) {
+                updatePayload[key] = req.body[key]
+            }
+        }
+
+        // Normalize types
+        if (typeof updatePayload.fees !== 'undefined') {
+            updatePayload.fees = Number(updatePayload.fees)
+        }
+        if (typeof updatePayload.available !== 'undefined') {
+            updatePayload.available = Boolean(updatePayload.available)
+        }
+        if (typeof updatePayload.address === 'string') {
+            try {
+                updatePayload.address = JSON.parse(updatePayload.address)
+            } catch (_) { /* ignore parse errors */ }
+        }
+
+        await doctorModel.findByIdAndUpdate(docId, updatePayload)
+        return res.json({ success: true, message: 'Doctor updated successfully' })
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, message: error.message })
+    }
+}
+
+export { updateDoctor }
