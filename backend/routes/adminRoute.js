@@ -13,8 +13,10 @@ adminRouter.post("/cancel-appointment", authAdmin, appointmentCancel)
 adminRouter.get("/all-doctors", authAdmin, allDoctors)
 adminRouter.post("/change-availability", authAdmin, changeAvailablity)
 adminRouter.get("/dashboard", authAdmin, adminDashboard)
+// News routes
 adminRouter.post("/news/add", authAdmin, upload.single("image"), addNews);
 adminRouter.put("/news/update/:id", authAdmin, upload.single("image"), updateNews);
 adminRouter.delete("/news/delete/:id", authAdmin, deleteNews);
 adminRouter.get("/news", listNews);
+
 export default adminRouter;
