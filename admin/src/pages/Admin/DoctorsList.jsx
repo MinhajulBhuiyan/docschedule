@@ -6,9 +6,7 @@ import { toast } from 'react-toastify'
 
 const DoctorsList = () => {
   const navigate = useNavigate()
-  const { doctors, changeAvailability, aToken, getAllDoctors, updateDoctor } = useContext(AdminContext)
-  const [editingDoctor, setEditingDoctor] = useState(null)
-  const [editForm, setEditForm] = useState({ name: '', degree: '', speciality: '', experience: '', fees: '', available: false })
+  const { doctors, changeAvailability, aToken, getAllDoctors } = useContext(AdminContext)
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedSpeciality, setSelectedSpeciality] = useState('all')
   const [sortBy, setSortBy] = useState('name')
@@ -76,42 +74,8 @@ const DoctorsList = () => {
   }
 
   const handleEditDoctor = (doctorId) => {
-    const doc = doctors.find(d => d._id === doctorId)
-    if (!doc) return
-    setEditingDoctor(doc)
-    setEditForm({
-      name: doc.name || '',
-      degree: doc.degree || '',
-      speciality: doc.speciality || '',
-      experience: doc.experience || '',
-      fees: doc.fees || '',
-      available: !!doc.available
-    })
-  }
-
-  const handleEditChange = (e) => {
-    const { name, value, type, checked } = e.target
-    setEditForm(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }))
-  }
-
-  const handleSaveEdit = async () => {
-    if (!editingDoctor?._id) return
-    const success = await updateDoctor({
-      docId: editingDoctor._id,
-      name: editForm.name,
-      degree: editForm.degree,
-      speciality: editForm.speciality,
-      experience: editForm.experience,
-      fees: Number(editForm.fees),
-      available: editForm.available
-    })
-    if (success) {
-      setEditingDoctor(null)
-    }
-  }
-
-  const handleCancelEdit = () => {
-    setEditingDoctor(null)
+    // previously opened edit modal; reverting to informational toast
+    toast.info('Edit feature is currently unavailable')
   }
 
   const handleDeleteDoctor = (doctorId) => {
@@ -335,44 +299,7 @@ const DoctorsList = () => {
         </div>
       )}
 
-      {/* Edit Modal */}
-      {editingDoctor && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white w-full max-w-lg rounded-2xl shadow-2xl p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">Edit Doctor</h3>
-            <div className="grid grid-cols-1 gap-4">
-              <div>
-                <label className="block text-sm text-gray-600 mb-1">Name</label>
-                <input name="name" value={editForm.name} onChange={handleEditChange} className="w-full border rounded-lg px-3 py-2" />
-              </div>
-              <div>
-                <label className="block text-sm text-gray-600 mb-1">Degree</label>
-                <input name="degree" value={editForm.degree} onChange={handleEditChange} className="w-full border rounded-lg px-3 py-2" />
-              </div>
-              <div>
-                <label className="block text-sm text-gray-600 mb-1">Speciality</label>
-                <input name="speciality" value={editForm.speciality} onChange={handleEditChange} className="w-full border rounded-lg px-3 py-2" />
-              </div>
-              <div>
-                <label className="block text-sm text-gray-600 mb-1">Experience</label>
-                <input name="experience" value={editForm.experience} onChange={handleEditChange} className="w-full border rounded-lg px-3 py-2" />
-              </div>
-              <div>
-                <label className="block text-sm text-gray-600 mb-1">Fees</label>
-                <input name="fees" type="number" value={editForm.fees} onChange={handleEditChange} className="w-full border rounded-lg px-3 py-2" />
-              </div>
-              <label className="inline-flex items-center gap-2 mt-2">
-                <input type="checkbox" name="available" checked={editForm.available} onChange={handleEditChange} />
-                <span className="text-sm text-gray-700">Available</span>
-              </label>
-            </div>
-            <div className="flex justify-end gap-3 mt-6">
-              <button onClick={handleCancelEdit} className="px-4 py-2 rounded-lg border">Cancel</button>
-              <button onClick={handleSaveEdit} className="px-4 py-2 rounded-lg bg-blue-600 text-white">Save</button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Edit Modal removed in revert */}
 
       {/* Footer Info */}
       <div className="mt-12 bg-gradient-to-r from-gray-50 to-blue-50 border border-gray-200 rounded-2xl p-8 shadow-lg">
