@@ -7,7 +7,10 @@ export const AdminContext = createContext()
 
 const AdminContextProvider = (props) => {
 
-    const backendUrl = import.meta.env.VITE_BACKEND_URL
+    // Smart backend URL selection with fallback
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || 
+                      import.meta.env.VITE_BACKEND_URL_LOCAL || 
+                      'http://localhost:4000'
 
     const [aToken, setAToken] = useState(localStorage.getItem('aToken') ? localStorage.getItem('aToken') : '')
 

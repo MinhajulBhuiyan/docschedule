@@ -7,7 +7,11 @@ export const AppContext = createContext()
 const AppContextProvider = (props) => {
 
     const currencySymbol = '৳'
-    const backendUrl = import.meta.env.VITE_BACKEND_URL
+    
+    // Smart backend URL selection with fallback
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || 
+                      import.meta.env.VITE_BACKEND_URL_LOCAL || 
+                      'http://localhost:4000'
 
     const [doctors, setDoctors] = useState([])
     const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : '')
