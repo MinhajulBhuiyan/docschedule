@@ -69,57 +69,81 @@ const AddDoctor = () => {
     }
 
     return (
-        <form onSubmit={onSubmitHandler} className='m-5 w-full flex justify-center'>
-
-            <div className='bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-6 text-white shadow-xl mb-5'>
-                <h1 className='text-2xl font-bold'>Add Doctor</h1>
-                <p className='text-blue-100 mt-1'>Create a new doctor profile by filling out the details below.</p>
+        <div className='p-6 max-w-4xl mx-auto'>
+            <div className='mb-6'>
+                <h1 className='text-2xl font-semibold text-gray-900'>Add Doctor</h1>
+                <p className='text-gray-600 mt-1'>Create a new doctor profile</p>
             </div>
 
-            <div className='bg-white border border-gray-100 rounded-2xl shadow-lg p-6 w-full max-w-5xl mx-auto'>
-                <div className='mb-8'>
-                    <p className='text-sm font-semibold text-gray-700 mb-2'>Profile Photo</p>
+            <form onSubmit={onSubmitHandler} className='bg-white rounded-lg border border-gray-200 p-6'>
+                <div className='mb-6'>
+                    <label className='block text-sm font-medium text-gray-700 mb-2'>Profile Photo</label>
                     <label htmlFor="doc-img" className='block'>
-                        <div className='flex items-center gap-4 p-4 rounded-2xl border-2 border-dashed border-blue-200 bg-blue-50/30 hover:bg-blue-50 transition-colors cursor-pointer'>
-                            <img className='w-16 h-16 rounded-full object-cover bg-gray-100' src={docImg ? URL.createObjectURL(docImg) : assets.upload_area} alt="upload" />
+                        <div className='flex items-center gap-3 p-3 rounded-lg border border-dashed border-gray-300 hover:border-gray-400 transition-colors cursor-pointer'>
+                            <img className='w-12 h-12 rounded-full object-cover bg-gray-100' src={docImg ? URL.createObjectURL(docImg) : assets.upload_area} alt="upload" />
                             <div>
-                                <p className='text-gray-700 font-medium'>Click to upload</p>
-                                <p className='text-xs text-gray-500'>PNG or JPG up to 5MB</p>
+                                <p className='text-sm text-gray-700'>Click to upload photo</p>
+                                <p className='text-xs text-gray-500'>PNG or JPG</p>
                             </div>
                         </div>
                     </label>
                     <input onChange={(e) => setDocImg(e.target.files[0])} type="file" id="doc-img" accept='image/*' hidden />
                 </div>
 
-                <div className='flex flex-col lg:flex-row items-start gap-10 text-gray-600'>
-
-                    <div className='w-full lg:flex-1 flex flex-col gap-4'>
-
-                        <div className='flex-1 flex flex-col gap-1'>
-                            <p className='text-sm font-medium text-gray-700'>Full Name</p>
-                            <input onChange={e => setName(e.target.value)} value={name} className='border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500' type="text" placeholder='Enter full name' required />
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+                    <div className='space-y-4'>
+                        <div>
+                            <label className='block text-sm font-medium text-gray-700 mb-1'>Full Name</label>
+                            <input 
+                                onChange={e => setName(e.target.value)} 
+                                value={name} 
+                                className='w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent' 
+                                type="text" 
+                                placeholder='Enter full name' 
+                                required 
+                            />
                         </div>
 
-                        <div className='flex-1 flex flex-col gap-1'>
-                            <p className='text-sm font-medium text-gray-700'>Email</p>
-                            <input onChange={e => setEmail(e.target.value)} value={email} className='border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500' type="email" placeholder='doctor@email.com' required />
+                        <div>
+                            <label className='block text-sm font-medium text-gray-700 mb-1'>Email</label>
+                            <input 
+                                onChange={e => setEmail(e.target.value)} 
+                                value={email} 
+                                className='w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent' 
+                                type="email" 
+                                placeholder='doctor@email.com' 
+                                required 
+                            />
                         </div>
 
-
-                        <div className='flex-1 flex flex-col gap-1'>
-                            <p className='text-sm font-medium text-gray-700'>Password</p>
+                        <div>
+                            <label className='block text-sm font-medium text-gray-700 mb-1'>Password</label>
                             <div className='relative'>
-                                <input onChange={e => setPassword(e.target.value)} value={password} className='w-full border rounded-xl px-3 py-2 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500' type={showPassword ? 'text' : 'password'} placeholder='Set a strong password' required />
-                                <button type='button' onClick={() => setShowPassword(v => !v)} className='absolute inset-y-0 right-2 px-2 text-xs font-medium text-blue-700 hover:text-blue-900'>
+                                <input 
+                                    onChange={e => setPassword(e.target.value)} 
+                                    value={password} 
+                                    className='w-full border border-gray-300 rounded-lg px-3 py-2 pr-16 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent' 
+                                    type={showPassword ? 'text' : 'password'} 
+                                    placeholder='Password' 
+                                    required 
+                                />
+                                <button 
+                                    type='button' 
+                                    onClick={() => setShowPassword(v => !v)} 
+                                    className='absolute inset-y-0 right-2 px-2 text-xs text-gray-500 hover:text-gray-700'
+                                >
                                     {showPassword ? 'Hide' : 'Show'}
                                 </button>
                             </div>
-                            <p className='text-xs text-gray-500 mt-1'>Minimum 8 characters recommended.</p>
                         </div>
 
-                        <div className='flex-1 flex flex-col gap-1'>
-                            <p className='text-sm font-medium text-gray-700'>Experience</p>
-                            <select onChange={e => setExperience(e.target.value)} value={experience} className='border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500' >
+                        <div>
+                            <label className='block text-sm font-medium text-gray-700 mb-1'>Experience</label>
+                            <select 
+                                onChange={e => setExperience(e.target.value)} 
+                                value={experience} 
+                                className='w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+                            >
                                 <option value="1 Year">1 Year</option>
                                 <option value="2 Year">2 Years</option>
                                 <option value="3 Year">3 Years</option>
@@ -143,18 +167,27 @@ const AddDoctor = () => {
                             </select>
                         </div>
 
-                        <div className='flex-1 flex flex-col gap-1'>
-                            <p className='text-sm font-medium text-gray-700'>Fees</p>
-                            <input onChange={e => setFees(e.target.value)} value={fees} className='border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500' type="number" placeholder='Consultation fees' required />
+                        <div>
+                            <label className='block text-sm font-medium text-gray-700 mb-1'>Consultation Fees</label>
+                            <input 
+                                onChange={e => setFees(e.target.value)} 
+                                value={fees} 
+                                className='w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent' 
+                                type="number" 
+                                placeholder='Enter fees' 
+                                required 
+                            />
                         </div>
-
                     </div>
 
-                    <div className='w-full lg:flex-1 flex flex-col gap-4'>
-
-                        <div className='flex-1 flex flex-col gap-1'>
-                            <p className='text-sm font-medium text-gray-700'>Speciality</p>
-                            <select onChange={e => setSpeciality(e.target.value)} value={speciality} className='border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500'>
+                    <div className='space-y-4'>
+                        <div>
+                            <label className='block text-sm font-medium text-gray-700 mb-1'>Speciality</label>
+                            <select 
+                                onChange={e => setSpeciality(e.target.value)} 
+                                value={speciality} 
+                                className='w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+                            >
                                 <option value="General physician">General physician</option>
                                 <option value="Gynecologist">Gynecologist</option>
                                 <option value="Dermatologist">Dermatologist</option>
@@ -164,33 +197,80 @@ const AddDoctor = () => {
                             </select>
                         </div>
 
-
-                        <div className='flex-1 flex flex-col gap-1'>
-                            <p className='text-sm font-medium text-gray-700'>Degree</p>
-                            <input onChange={e => setDegree(e.target.value)} value={degree} className='border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500' type="text" placeholder='e.g. MBBS, MD' required />
+                        <div>
+                            <label className='block text-sm font-medium text-gray-700 mb-1'>Degree</label>
+                            <input 
+                                onChange={e => setDegree(e.target.value)} 
+                                value={degree} 
+                                className='w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent' 
+                                type="text" 
+                                placeholder='e.g. MBBS, MD' 
+                                required 
+                            />
                         </div>
 
-                        <div className='flex-1 flex flex-col gap-1'>
-                            <p className='text-sm font-medium text-gray-700'>Address</p>
-                            <input onChange={e => setAddress1(e.target.value)} value={address1} className='border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500' type="text" placeholder='Street, area' required />
-                            <input onChange={e => setAddress2(e.target.value)} value={address2} className='mt-2 border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500' type="text" placeholder='City, state, ZIP' required />
+                        <div>
+                            <label className='block text-sm font-medium text-gray-700 mb-1'>Address</label>
+                            <input 
+                                onChange={e => setAddress1(e.target.value)} 
+                                value={address1} 
+                                className='w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-2' 
+                                type="text" 
+                                placeholder='Street, area' 
+                                required 
+                            />
+                            <input 
+                                onChange={e => setAddress2(e.target.value)} 
+                                value={address2} 
+                                className='w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent' 
+                                type="text" 
+                                placeholder='City, state, ZIP' 
+                                required 
+                            />
                         </div>
-
                     </div>
-
                 </div>
 
-                <div>
-                    <p className='mt-4 mb-2 text-sm font-semibold text-gray-700'>About Doctor</p>
-                    <textarea onChange={e => setAbout(e.target.value)} value={about} className='w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500' rows={5} placeholder='Write a short bio...'></textarea>
+                <div className='mt-6'>
+                    <label className='block text-sm font-medium text-gray-700 mb-1'>About Doctor</label>
+                    <textarea 
+                        onChange={e => setAbout(e.target.value)} 
+                        value={about} 
+                        className='w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent' 
+                        rows={4} 
+                        placeholder='Brief description about the doctor...'
+                    ></textarea>
                 </div>
 
-                <button type='submit' className='px-8 py-3 mt-4 text-white rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg'>Add Doctor</button>
-
-            </div>
-
-
-        </form>
+                <div className='mt-6 flex gap-3'>
+                    <button 
+                        type='submit' 
+                        className='px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors'
+                    >
+                        Add Doctor
+                    </button>
+                    <button 
+                        type='button' 
+                        onClick={() => {
+                            setDocImg(false);
+                            setName('');
+                            setEmail('');
+                            setPassword('');
+                            setExperience('1 Year');
+                            setFees('');
+                            setAbout('');
+                            setSpeciality('General physician');
+                            setDegree('');
+                            setAddress1('');
+                            setAddress2('');
+                        }}
+                        className='px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors'
+                    >
+                        Clear
+                    </button>
+                </div>
+            </form>
+        </div>
     )
 }
 
