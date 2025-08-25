@@ -9,7 +9,7 @@ const AppContextProvider = (props) => {
     const currencySymbol = '৳'
     
     // Smart backend URL selection with fallback
-    const backendUrl = import.meta.env.VITE_BACKEND_URL || 
+    const backendUrl = import.meta.env.VITE_BACKEND_URL_PROD || 
                       import.meta.env.VITE_BACKEND_URL_LOCAL || 
                       'http://localhost:4000'
 
