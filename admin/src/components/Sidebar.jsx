@@ -13,7 +13,8 @@ const Sidebar = () => {
     { path: '/admin-dashboard', icon: assets.home_icon, label: 'Dashboard' },
     { path: '/all-appointments', icon: assets.appointment_icon, label: 'Appointments' },
     { path: '/add-doctor', icon: assets.add_icon, label: 'Add Doctor' },
-    { path: '/doctor-list', icon: assets.people_icon, label: 'Doctors List' }
+    { path: '/doctor-list', icon: assets.people_icon, label: 'Doctors List' },
+    { path: '/patients-list', icon: assets.patients_icon, label: 'Patients List' }
   ]
 
   const doctorMenuItems = [

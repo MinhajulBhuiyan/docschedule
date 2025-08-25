@@ -19,33 +19,37 @@ import Homepage from './pages/Admin/HomePage';
 import AdminNewsManager from './pages/Admin/AdminNewsManager';
 import AppointmentDetails from './pages/Admin/AppointmentDetails';
 import AdminNewsList from './pages/Admin/AdminNewsList';
+import PatientsList from './pages/Admin/PatientsList';
 const App = () => {
 
   const { dToken } = useContext(DoctorContext)
   const { aToken } = useContext(AdminContext)
 
   return dToken || aToken ? (
-    <div className='bg-[#F8F9FD]'>
+    <div className='bg-[#F8F9FD] min-h-screen'>
       <ToastContainer />
       <Navbar />
-      <div className='flex items-start pt-20'>
+      <div className='flex'>
         <Sidebar />
-        <div className='ml-80 flex-1'>
-          <Routes>
-            <Route path='/' element={<Homepage/>} />
-            <Route path='/news' element={<AdminNewsManager/>} />
-             <Route path='/newslist' element={<AdminNewsList/>} />
-            <Route path='/admin-dashboard' element={<Dashboard />} />
-            <Route path='/all-appointments' element={<AllAppointments />} />
-            <Route path='/add-doctor' element={<AddDoctor />} />
-            <Route path='/doctor-list' element={<DoctorsList />} />
-            <Route path='/doctor-profile/:doctorId' element={<AdminDoctorProfile />} />
-            <Route path='/doctor-dashboard' element={<DoctorDashboard />} />
-            <Route path='/doctor-appointments' element={<DoctorAppointments />} />
-            <Route path='/doctor-profile' element={<DoctorProfile />} />
-             <Route path="/appointments/:id" element={<AppointmentDetails />} />
-          </Routes>
-        </div>
+        <main className='flex-1 ml-64 pt-16'>
+          <div className='p-6'>
+            <Routes>
+              <Route path='/' element={<Homepage/>} />
+              <Route path='/news' element={<AdminNewsManager/>} />
+               <Route path='/newslist' element={<AdminNewsList/>} />
+              <Route path='/admin-dashboard' element={<Dashboard />} />
+              <Route path='/all-appointments' element={<AllAppointments />} />
+              <Route path='/add-doctor' element={<AddDoctor />} />
+              <Route path='/doctor-list' element={<DoctorsList />} />
+              <Route path='/patients-list' element={<PatientsList />} />
+              <Route path='/doctor-profile/:doctorId' element={<AdminDoctorProfile />} />
+              <Route path='/doctor-dashboard' element={<DoctorDashboard />} />
+              <Route path='/doctor-appointments' element={<DoctorAppointments />} />
+              <Route path='/doctor-profile' element={<DoctorProfile />} />
+               <Route path="/appointments/:id" element={<AppointmentDetails />} />
+            </Routes>
+          </div>
+        </main>
       </div>
     </div>
   ) : (
