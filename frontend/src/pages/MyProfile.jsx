@@ -53,8 +53,24 @@ const MyProfile = () => {
     };
 
     const formatDate = (dateString) => {
-        if (!dateString) return 'Not specified';
+        if (!dateString || dateString === 'Not Selected' || dateString === '') return 'Not Selected';
+        
+        // If it's already in YYYY-MM-DD format, convert to display format
+        if (dateString.match(/^\d{4}-\d{2}-\d{2}$/)) {
+            const [year, month, day] = dateString.split('-');
+            const date = new Date(year, month - 1, day);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+        
         const date = new Date(dateString);
+        if (isNaN(date.getTime())) {
+            return 'Not Selected';
+        }
+        
         return date.toLocaleDateString('en-US', { 
             year: 'numeric', 
             month: 'long', 
@@ -227,8 +243,14 @@ const MyProfile = () => {
                                                 </div>
                                             ) : (
                                                 <div className="text-gray-700">
-                                                    <p>{userData.address?.line1 || 'Not specified'}</p>
-                                                    <p>{userData.address?.line2 || ''}</p>
+                                                    {userData.address?.line1 ? (
+                                                        <>
+                                                            <p>{userData.address.line1}</p>
+                                                            {userData.address.line2 && <p>{userData.address.line2}</p>}
+                                                        </>
+                                                    ) : (
+                                                        <p>Not specified</p>
+                                                    )}
                                                 </div>
                                             )}
                                         </div>

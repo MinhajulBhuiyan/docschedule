@@ -83,18 +83,17 @@ const Doctors = () => {
     setLoading(true)
     let filtered = [...doctors]
 
-    // Filter by speciality
-    if (speciality) {
+    // Filter by speciality (URL param takes precedence)
+    const activeSpeciality = speciality || selectedCategory
+    if (activeSpeciality) {
       filtered = filtered.filter(doc => 
-        matchesCategory(doc.speciality, speciality) ||
-        doc.speciality === speciality
+        matchesCategory(doc.speciality, activeSpeciality) ||
+        doc.speciality === activeSpeciality
       )
-      setSelectedCategory(speciality)
-    } else if (selectedCategory) {
-      filtered = filtered.filter(doc => 
-        matchesCategory(doc.speciality, selectedCategory) ||
-        doc.speciality === selectedCategory
-      )
+      // Sync selectedCategory with URL speciality
+      if (speciality && selectedCategory !== speciality) {
+        setSelectedCategory(speciality)
+      }
     }
 
     // Filter by search term
@@ -140,6 +139,16 @@ const Doctors = () => {
     applyFilters()
   }, [doctors, speciality, searchTerm, selectedCategory, sortBy])
 
+  // Clear selectedCategory when no speciality param and no selectedCategory should be active
+  useEffect(() => {
+    if (!speciality && selectedCategory) {
+      // Only clear if we're on /doctors (not on a specialty page)
+      if (window.location.pathname === '/doctors') {
+        setSelectedCategory('')
+      }
+    }
+  }, [speciality, selectedCategory])
+
   const handleCategoryClick = (category) => {
     if (selectedCategory === category) {
       setSelectedCategory('')
@@ -148,6 +157,19 @@ const Doctors = () => {
       setSelectedCategory(category)
       navigate(`/doctors/${category}`)
     }
+  }
+
+  // Clear all filters function
+  const clearAllFilters = () => {
+    setSearchTerm('')
+    setSelectedCategory('')
+    navigate('/doctors')
+  }
+
+  // Clear speciality filter function  
+  const clearSpecialityFilter = () => {
+    setSelectedCategory('')
+    navigate('/doctors')
   }
 
   // Function to get category styles based on color
@@ -186,7 +208,7 @@ const Doctors = () => {
       >
         <div 
           onClick={() => { navigate(`/appointment/${doc._id}`); scrollTo(0, 0) }} 
-          className={`bg-white border ${colorTheme.border} shadow-sm overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-700 hover:-translate-y-3 hover:${colorTheme.hoverBorder} h-full flex flex-col relative before:absolute before:inset-0 before:bg-gradient-to-t before:from-blue-50/0 before:to-blue-50/20 before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100`}
+          className={`bg-white border ${colorTheme.border} shadow-sm overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-700 hover:-translate-y-3 hover:${colorTheme.hoverBorder} flex flex-col relative before:absolute before:inset-0 before:bg-gradient-to-t before:from-blue-50/0 before:to-blue-50/20 before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100 rounded-lg min-h-[420px]`}
         >
           {/* Enhanced Image Container */}
           <div className='relative overflow-hidden aspect-square'>
@@ -554,34 +576,35 @@ const Doctors = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-6 min-h-0">
-          {/* Left Sidebar - Categories - Compact */}
-          <div className="w-full lg:w-64 flex-shrink-0">
-            <div className="bg-white rounded-xl shadow-lg p-4 sticky top-20">
-              <h2 className="text-lg font-semibold text-gray-800 mb-4">Specialities</h2>
-              <div className="space-y-2">
+          {/* Left Sidebar - Categories - Clean */}
+          <div className="w-full lg:w-80 flex-shrink-0">
+            <div className="bg-white rounded-xl shadow-lg p-6 sticky top-20">
+              <h2 className="text-xl font-bold text-gray-800 mb-6">Specialities</h2>
+              
+              <div className="max-h-96 overflow-y-auto space-y-3 pr-2">
                 {categories.map((cat) => (
                   <motion.button
                     key={cat.name}
                     onClick={() => handleCategoryClick(cat.name)}
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`w-full text-left p-3 rounded-lg border transition-all duration-300 hover:shadow-md transform group ${
+                    className={`w-full text-left p-4 rounded-lg border transition-all duration-300 hover:shadow-md transform group ${
                       (speciality === cat.name || selectedCategory === cat.name)
                         ? getCategoryStyles(cat.color)
                         : 'bg-white border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-50'
                     }`}
                   >
-                    <div className="flex items-center gap-3">
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-lg transition-all duration-300 ${
+                    <div className="flex items-center gap-4">
+                      <div className={`w-12 h-12 rounded-lg flex items-center justify-center text-xl transition-all duration-300 ${
                         (speciality === cat.name || selectedCategory === cat.name)
                           ? 'bg-white shadow-sm scale-105'
                           : 'bg-gray-100 group-hover:bg-gray-200 group-hover:scale-105'
                       }`}>
-                        <span className="text-sm">{cat.icon}</span>
+                        <span className="text-lg">{cat.icon}</span>
                       </div>
                       <div className="flex-1 min-w-0">
-                        <span className="font-medium text-sm block truncate">{cat.name}</span>
-                        <div className="text-xs text-gray-500 mt-0.5">
+                        <span className="font-semibold text-base block truncate">{cat.name}</span>
+                        <div className="text-sm text-gray-500 mt-1">
                           {doctors.filter(doc => matchesCategory(doc.speciality, cat.name) || doc.speciality === cat.name).length} doctors
                         </div>
                       </div>
@@ -589,9 +612,9 @@ const Doctors = () => {
                         <motion.div
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}
-                          className="w-4 h-4 bg-white rounded-full flex items-center justify-center shadow-sm"
+                          className="w-5 h-5 bg-white rounded-full flex items-center justify-center shadow-sm"
                         >
-                          <svg className="w-2 h-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                           </svg>
                         </motion.div>
@@ -612,7 +635,7 @@ const Doctors = () => {
                   {selectedCategory || speciality ? `${selectedCategory || speciality} Doctors` : 'All Doctors'}
                   <span className="text-gray-500 font-normal ml-2">({filterDoc.length} results)</span>
                 </h3>
-                {(searchTerm || selectedCategory) && (
+                {(searchTerm || selectedCategory || speciality) && (
                   <div className="flex items-center gap-2 mt-2">
                     <span className="text-sm text-gray-500">Filters applied:</span>
                     {searchTerm && (
@@ -623,10 +646,20 @@ const Doctors = () => {
                         </svg>
                       </span>
                     )}
-                    {selectedCategory && (
+                    {(selectedCategory || speciality) && (
                       <span className="inline-flex items-center gap-1 px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">
-                        {selectedCategory}
-                        <svg className="w-3 h-3 ml-1 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" onClick={() => setSelectedCategory('')}>
+                        {selectedCategory || speciality}
+                        <svg 
+                          className="w-3 h-3 ml-1 cursor-pointer hover:text-purple-900" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24" 
+                          onClick={(e) => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            clearSpecialityFilter()
+                          }}
+                        >
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                         </svg>
                       </span>
@@ -635,12 +668,12 @@ const Doctors = () => {
                 )}
               </div>
               
-              {(searchTerm || selectedCategory) && (
+              {(searchTerm || selectedCategory || speciality) && (
                 <button
-                  onClick={() => {
-                    setSearchTerm('')
-                    setSelectedCategory('')
-                    navigate('/doctors')
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    clearAllFilters()
                   }}
                   className="bg-gradient-to-r from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 text-gray-700 px-6 py-3 rounded-xl transition-all duration-300 text-sm font-medium border border-gray-300 hover:border-gray-400 transform hover:scale-105 active:scale-95 shadow-sm"
                 >
@@ -697,7 +730,7 @@ const Doctors = () => {
                   ) : (
                     <>
                       {viewMode === 'grid' ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                           {filterDoc.map((doc, index) => (
                             <DoctorCard key={doc._id} doc={doc} index={index} />
                           ))}
