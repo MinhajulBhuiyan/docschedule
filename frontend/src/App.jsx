@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from './components/Navbar'
+import ScrollToTop from './components/ScrollToTop'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Doctors from './pages/Doctors'
@@ -23,6 +24,7 @@ const App = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <ToastContainer />
+      <ScrollToTop />
       
       {/* Fixed Navbar */}
       <Navbar />

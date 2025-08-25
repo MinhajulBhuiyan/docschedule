@@ -4,6 +4,7 @@ import { AdminContext } from './context/AdminContext';
 import { Route, Routes } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import Dashboard from './pages/Admin/Dashboard';
@@ -28,6 +29,7 @@ const App = () => {
   return dToken || aToken ? (
     <div className='bg-[#F8F9FD] min-h-screen'>
       <ToastContainer />
+      <ScrollToTop />
       <Navbar />
       <div className='flex'>
         <Sidebar />
@@ -55,6 +57,7 @@ const App = () => {
   ) : (
     <>
       <ToastContainer />
+      <ScrollToTop />
       <Login />
     </>
   )
