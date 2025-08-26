@@ -12,7 +12,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
 
-  const backendUrl = import.meta.env.VITE_BACKEND_URL
+  const backendUrl = import.meta.env.VITE_BACKEND_URL || import.meta.env.VITE_BACKEND_URL_PROD
 
   const { setDToken } = useContext(DoctorContext)
   const { setAToken } = useContext(AdminContext)
