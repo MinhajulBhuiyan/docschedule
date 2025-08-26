@@ -5,7 +5,7 @@ import { AppContext } from '../../context/AppContext'
 import { AdminContext } from '../../context/AdminContext'
 import { NewsDetailModal } from './NewsDetailModal'
 import { motion } from 'framer-motion'
-import { BadgeCheck, Calendar, Edit, Eye, Trash2 } from 'lucide-react'
+import { FaCheckCircle, FaCalendarAlt, FaEdit, FaEye, FaTrash } from 'react-icons/fa'
 
 const AdminNewsList = () => {
   const { backendUrl } = useContext(AppContext)
@@ -132,7 +132,7 @@ const AdminNewsList = () => {
                     {news.category}
                   </span>
                   <div className="flex items-center gap-1">
-                    <Calendar size={14} /> 
+                    <FaCalendarAlt size={14} /> 
                     {new Date(news.createdAt).toLocaleDateString()}
                   </div>
                 </div>
@@ -144,14 +144,14 @@ const AdminNewsList = () => {
                   onClick={() => setSelectedNews(news)}
                   className="flex items-center gap-1 px-3 py-1 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
                 >
-                  <Eye size={16}/> View
+                  <FaEye size={16}/> View
                 </button>
                 <div className="flex gap-2">
                   <button className="flex items-center gap-1 px-3 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600 transition">
-                    <Edit size={16}/> Edit
+                    <FaEdit size={16}/> Edit
                   </button>
                   <button className="flex items-center gap-1 px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">
-                    <Trash2 size={16}/> Delete
+                    <FaTrash size={16}/> Delete
                   </button>
                 </div>
               </div>

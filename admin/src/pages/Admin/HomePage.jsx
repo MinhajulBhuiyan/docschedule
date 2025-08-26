@@ -129,14 +129,7 @@ const Homepage = () => {
       color: "from-orange-500 to-orange-600",
       link: "/doctor-list",
     },
-    {
-      title: "Patient Records",
-      description:
-        "Securely view and update patient medical histories.",
-      icon: <FiUsers size={24} />,
-      color: "from-pink-500 to-pink-600",
-      link: "/patients",
-    },
+
     {
       title: "System Settings",
       description:
@@ -145,14 +138,7 @@ const Homepage = () => {
       color: "from-teal-500 to-teal-600",
       link: "/settings",
     },
-    {
-      title: "Reports & Analytics",
-      description:
-        "Generate detailed reports and track performance.",
-      icon: <FiBarChart2 size={24} />,
-      color: "from-indigo-500 to-indigo-600",
-      link: "/reports",
-    },
+
     {
       title: "Support & Help",
       description:
@@ -168,7 +154,7 @@ const Homepage = () => {
       {/* Hero Section */}
       <div>
         <h1 className="text-3xl font-bold text-gray-800 mb-3">
-          Welcome Back, Admin 👋
+          Welcome Back, Admin
         </h1>
         <p className="text-gray-600 mb-8">
           Your central hub for managing hospital operations efficiently.

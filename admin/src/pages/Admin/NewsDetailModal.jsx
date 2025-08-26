@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Calendar, User, Tag, Star, X, Share2, Bookmark, Heart } from 'lucide-react'
+import { FaCalendarAlt, FaUser, FaTag, FaStar, FaTimes, FaShare, FaBookmark, FaHeart } from 'react-icons/fa'
 
 export const NewsDetailModal = ({ news, onClose }) => {
   return (
@@ -32,7 +32,7 @@ export const NewsDetailModal = ({ news, onClose }) => {
                 onClick={onClose}
                 className="absolute top-4 right-4 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full transition"
               >
-                <X size={20} />
+                <FaTimes size={20} />
               </button>
             </div>
 
@@ -46,17 +46,17 @@ export const NewsDetailModal = ({ news, onClose }) => {
               {/* Meta Info */}
               <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
                 <span className="flex items-center gap-1">
-                  <User size={16} /> {news.author}
+                  <FaUser size={16} /> {news.author}
                 </span>
                 <span className="flex items-center gap-1">
-                  <Calendar size={16} /> {new Date(news.createdAt).toLocaleDateString()}
+                  <FaCalendarAlt size={16} /> {new Date(news.createdAt).toLocaleDateString()}
                 </span>
                 <span className="flex items-center gap-1">
-                  <Tag size={16} /> {news.category}
+                  <FaTag size={16} /> {news.category}
                 </span>
                 {news.isFeatured && (
                   <span className="flex items-center gap-1 text-yellow-600 font-semibold">
-                    <Star size={16} /> Featured
+                    <FaStar size={16} /> Featured
                   </span>
                 )}
               </div>
@@ -92,13 +92,13 @@ export const NewsDetailModal = ({ news, onClose }) => {
 
                 <div className="flex gap-3">
                   <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition">
-                    <Heart size={18} className="text-red-500" />
+                    <FaHeart size={18} className="text-red-500" />
                   </button>
                   <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition">
-                    <Bookmark size={18} className="text-blue-500" />
+                    <FaBookmark size={18} className="text-blue-500" />
                   </button>
                   <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition">
-                    <Share2 size={18} className="text-green-500" />
+                    <FaShare size={18} className="text-green-500" />
                   </button>
                 </div>
               </div>

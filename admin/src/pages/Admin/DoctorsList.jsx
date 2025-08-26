@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AdminContext } from '../../context/AdminContext'
-import { FaUserMd, FaStethoscope, FaCheckCircle, FaTimesCircle, FaHospital, FaSearch, FaFilter, FaEye, FaEdit, FaTrash, FaPlus, FaSortAmountDown, FaSortAmountUp } from "react-icons/fa"
+import { FaHospital, FaSearch, FaFilter, FaEye, FaPlus, FaSortAmountDown, FaSortAmountUp } from "react-icons/fa"
 import { toast } from 'react-toastify'
 
 const DoctorsList = () => {
@@ -12,6 +12,16 @@ const DoctorsList = () => {
   const [sortBy, setSortBy] = useState('name')
   const [sortOrder, setSortOrder] = useState('asc')
   const [filteredDoctors, setFilteredDoctors] = useState([])
+
+  // Match department colors with frontend for consistent visuals
+  const specialtyColors = {
+    'General Physician': { bg: 'bg-blue-50', text: 'text-blue-600', border: 'border-blue-100' },
+    'Gynecologist': { bg: 'bg-pink-50', text: 'text-pink-600', border: 'border-pink-100' },
+    'Dermatologist': { bg: 'bg-green-50', text: 'text-green-600', border: 'border-green-100' },
+    'Pediatricians': { bg: 'bg-yellow-50', text: 'text-yellow-600', border: 'border-yellow-100' },
+    'Neurologist': { bg: 'bg-purple-50', text: 'text-purple-600', border: 'border-purple-100' },
+    'Gastroenterologist': { bg: 'bg-indigo-50', text: 'text-indigo-600', border: 'border-indigo-100' }
+  }
 
   useEffect(() => {
     if (aToken) {
@@ -90,30 +100,28 @@ const DoctorsList = () => {
   return (
     <div className="m-6 max-h-[90vh] overflow-y-auto">
       {/* Page Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-white mb-8 shadow-xl">
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+      <div className="bg-white border border-gray-200 rounded-xl p-6 mb-6 shadow-sm">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <div>
-            <h1 className="text-4xl font-bold tracking-wide flex items-center gap-3 mb-2">
-              <FaHospital className="text-blue-200" /> Doctors Directory
+            <h1 className="text-2xl font-semibold tracking-tight flex items-center gap-2 text-gray-900">
+              <FaHospital className="text-blue-600" /> Doctors Directory
             </h1>
-            <p className="text-blue-100 text-lg">
-              Manage and monitor all registered doctors in the platform
-            </p>
+            <p className="text-gray-500 text-sm mt-1">Manage and monitor all registered doctors</p>
           </div>
           <div className="flex gap-3">
             <button
               onClick={() => navigate('/add-doctor')}
-              className="px-6 py-3 bg-white text-blue-600 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 flex items-center gap-2 shadow-lg"
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors flex items-center gap-2"
             >
-              <FaPlus /> Add New Doctor
+              <FaPlus /> Add Doctor
             </button>
           </div>
         </div>
       </div>
 
       {/* Search and Filter Section */}
-      <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 mb-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-200 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
           {/* Search */}
           <div className="relative">
             <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
@@ -122,7 +130,7 @@ const DoctorsList = () => {
               placeholder="Search doctors..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+              className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
             />
           </div>
 
@@ -132,7 +140,7 @@ const DoctorsList = () => {
             <select
               value={selectedSpeciality}
               onChange={(e) => setSelectedSpeciality(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 appearance-none bg-white"
+              className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm bg-white"
             >
               {specialities.map((speciality) => (
                 <option key={speciality} value={speciality}>
@@ -147,7 +155,7 @@ const DoctorsList = () => {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 appearance-none bg-white"
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm bg-white"
             >
               <option value="name">Sort by Name</option>
               <option value="speciality">Sort by Speciality</option>
@@ -159,7 +167,7 @@ const DoctorsList = () => {
           {/* Sort Order */}
           <button
             onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
-            className="px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-all duration-300 flex items-center justify-center gap-2"
+            className="px-4 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm flex items-center justify-center gap-2"
           >
             {sortOrder === 'asc' ? <FaSortAmountUp /> : <FaSortAmountDown />}
             {sortOrder === 'asc' ? 'A-Z' : 'Z-A'}
@@ -167,87 +175,66 @@ const DoctorsList = () => {
         </div>
 
         {/* Results Count */}
-        <div className="mt-4 pt-4 border-t border-gray-200">
-          <p className="text-gray-600">
-            Showing <span className="font-semibold text-blue-600">{filteredDoctors.length}</span> of{' '}
-            <span className="font-semibold text-gray-800">{doctors.length}</span> doctors
-          </p>
+        <div className="mt-3 pt-3 border-t border-gray-100">
+          <p className="text-gray-500 text-sm">Showing {filteredDoctors.length} of {doctors.length} doctors</p>
         </div>
       </div>
 
       {/* Doctors Grid */}
       {filteredDoctors.length === 0 ? (
-        <div className="text-center py-20 bg-white rounded-2xl shadow-lg border border-gray-100">
-          <FaUserMd className="text-gray-400 text-6xl mx-auto mb-4" />
-          <h3 className="text-2xl font-bold text-gray-600 mb-2">No doctors found</h3>
-          <p className="text-gray-500 mb-6">
+        <div className="text-center py-16 bg-white rounded-xl shadow-sm border border-gray-200">
+          <h3 className="text-lg font-semibold text-gray-700 mb-2">No doctors found</h3>
+          <p className="text-gray-500 mb-6 text-sm">
             {searchTerm || selectedSpeciality !== 'all' 
-              ? 'Try adjusting your search or filter criteria' 
-              : 'No doctors have been registered yet'
-            }
+              ? 'Adjust your search or filters' 
+              : 'No doctors have been registered yet'}
           </p>
           {!searchTerm && selectedSpeciality === 'all' && (
             <button
               onClick={() => navigate('/add-doctor')}
-              className="px-6 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300 flex items-center gap-2 mx-auto"
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
             >
               <FaPlus /> Add First Doctor
             </button>
           )}
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {filteredDoctors.map((doctor) => (
             <div
               key={doctor._id}
-              className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden relative"
+              className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden"
             >
-              {/* Doctor Image */}
-              <div className="relative w-full h-48 bg-gradient-to-br from-blue-50 to-blue-100 overflow-hidden">
+              {/* Image */}
+              <div className="relative w-full h-60 bg-gray-50">
                 <img
                   src={doctor.image}
                   alt={doctor.name}
-                  className="object-cover w-full h-full group-hover:scale-110 transition-all duration-500"
+                  className="object-contain w-full h-full p-2"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                
-                {/* Speciality Badge */}
-                <span className="absolute top-3 left-3 bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
-                  {doctor.speciality}
-                </span>
-                
-                {/* Availability Badge */}
-                <span className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold shadow-lg ${
-                  doctor.available 
-                    ? 'bg-green-500 text-white' 
-                    : 'bg-red-500 text-white'
-                }`}>
-                  {doctor.available ? 'Available' : 'Unavailable'}
-                </span>
+                {/* Top badges */}
+                <div className="absolute top-2 left-2">
+                  {(() => {
+                    const color = specialtyColors[doctor.speciality] || { bg: 'bg-gray-50', text: 'text-gray-700', border: 'border-gray-200' }
+                    return (
+                      <span className={`px-2 py-0.5 rounded-full text-[11px] font-medium ${color.bg} ${color.text} border ${color.border}`}>
+                        {doctor.speciality}
+                      </span>
+                    )
+                  })()}
+                </div>
+                <div className="absolute top-2 right-2">
+                  <span className={`px-2 py-0.5 rounded-full text-[11px] font-medium border ${doctor.available ? 'bg-green-50 text-green-700 border-green-200' : 'bg-red-50 text-red-700 border-red-200'}`}>
+                    {doctor.available ? 'Available' : 'Unavailable'}
+                  </span>
+                </div>
               </div>
 
               {/* Card Body */}
-              <div className="p-6">
-                {/* Doctor Name and Degree */}
-                <h3 className="text-xl font-bold text-gray-800 mb-2 flex items-center gap-2">
-                  <FaUserMd className="text-blue-600" />
-                  {doctor.name}
-                </h3>
-                <p className="text-gray-600 text-sm mb-3 italic">{doctor.degree}</p>
-
-                {/* Quick Info */}
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-center gap-2 text-sm text-gray-600">
-                    <FaStethoscope className="text-blue-500" />
-                    <span>{doctor.speciality}</span>
-                  </div>
-                  {doctor.experience && (
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
-                      <FaUserMd className="text-green-500" />
-                      <span>{doctor.experience} years experience</span>
-                    </div>
-                  )}
-                </div>
+              <div className="p-4">
+                {/* Name and Degree */}
+                <h3 className="text-lg font-semibold text-gray-900 truncate">{doctor.name}</h3>
+                <p className="text-gray-500 text-sm mb-3 truncate">{doctor.degree}</p>
 
                 {/* Availability Toggle */}
                 <div className="mb-4 p-3 bg-gray-50 rounded-lg">
@@ -260,21 +247,16 @@ const DoctorsList = () => {
                         onChange={() => handleAvailabilityChange(doctor._id)}
                         className="sr-only peer"
                       />
-                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                      <div className="w-10 h-5 bg-gray-200 rounded-full peer peer-checked:bg-blue-600 transition-colors after:content-[''] after:absolute after:h-4 after:w-4 after:bg-white after:rounded-full after:left-[2px] after:top-[2px] after:transition-all peer-checked:after:translate-x-5"></div>
                     </label>
                   </div>
-                  <p className={`text-xs mt-1 ${
-                    doctor.available ? 'text-green-600' : 'text-red-600'
-                  }`}>
-                    {doctor.available ? 'Accepting patients' : 'Not accepting patients'}
-                  </p>
                 </div>
 
                 {/* Action Buttons */}
                 <div className="flex gap-2">
                   <button
                     onClick={() => handleViewProfile(doctor._id)}
-                    className="flex-1 px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 transition-all duration-300 flex items-center justify-center gap-2"
+                    className="flex-1 px-3 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
                   >
                     <FaEye /> View Profile
                   </button>
@@ -289,33 +271,26 @@ const DoctorsList = () => {
       {/* Edit Modal removed in revert */}
 
       {/* Footer Info */}
-      <div className="mt-12 bg-gradient-to-r from-gray-50 to-blue-50 border border-gray-200 rounded-2xl p-8 shadow-lg">
-        <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-          <FaHospital className="text-blue-600" />
-          Platform Statistics
+      <div className="mt-10 bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+          <FaHospital className="text-blue-600" /> Platform Statistics
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="text-center p-4 bg-white rounded-xl shadow-md">
-            <div className="text-3xl font-bold text-blue-600">{doctors.length}</div>
-            <div className="text-sm text-gray-600">Total Doctors</div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="text-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="text-2xl font-semibold text-blue-700">{doctors.length}</div>
+            <div className="text-xs text-gray-600">Total Doctors</div>
           </div>
-          <div className="text-center p-4 bg-white rounded-xl shadow-md">
-            <div className="text-3xl font-bold text-green-600">
-              {doctors.filter(d => d.available).length}
-            </div>
-            <div className="text-sm text-gray-600">Available</div>
+          <div className="text-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="text-2xl font-semibold text-green-700">{doctors.filter(d => d.available).length}</div>
+            <div className="text-xs text-gray-600">Available</div>
           </div>
-          <div className="text-center p-4 bg-white rounded-xl shadow-md">
-            <div className="text-3xl font-bold text-red-600">
-              {doctors.filter(d => !d.available).length}
-            </div>
-            <div className="text-sm text-gray-600">Unavailable</div>
+          <div className="text-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="text-2xl font-semibold text-red-700">{doctors.filter(d => !d.available).length}</div>
+            <div className="text-xs text-gray-600">Unavailable</div>
           </div>
-          <div className="text-center p-4 bg-white rounded-xl shadow-md">
-            <div className="text-3xl font-bold text-purple-600">
-              {new Set(doctors.map(d => d.speciality)).size}
-            </div>
-            <div className="text-sm text-gray-600">Specialities</div>
+          <div className="text-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="text-2xl font-semibold text-purple-700">{new Set(doctors.map(d => d.speciality)).size}</div>
+            <div className="text-xs text-gray-600">Specialities</div>
           </div>
         </div>
       </div>

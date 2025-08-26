@@ -1,6 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { User, Phone, MapPin, Calendar, Clock, UserCheck, Info, DollarSign, Layers } from "lucide-react";
+import { FaUser, FaPhone, FaMapMarkerAlt, FaCalendarAlt, FaClock, FaUserCheck, FaInfoCircle, FaDollarSign, FaLayerGroup } from "react-icons/fa";
 
 const AppointmentDetails = () => {
 
@@ -55,7 +55,7 @@ const AppointmentDetails = () => {
       <section className="bg-gradient-to-r from-blue-50 to-blue-100 border-l-4 border-blue-500 rounded-3xl shadow-xl p-12 space-y-6 hover:shadow-2xl transition duration-300">
 
         <h2 className="text-3xl font-bold flex items-center gap-4 text-blue-700">
-          <User className="w-8 h-8" /> Patient Information
+          <FaUser className="w-8 h-8" /> Patient Information
         </h2>
 
         <div className="flex flex-col sm:flex-row sm:items-center gap-12">
@@ -73,11 +73,11 @@ const AppointmentDetails = () => {
             </p>
 
             <div className="flex items-center gap-4 text-gray-600 text-lg">
-              <Phone className="w-5 h-5" /> {appointment.patientPhone}
+              <FaPhone className="w-5 h-5" /> {appointment.patientPhone}
             </div>
 
             <div className="flex items-start gap-4 text-gray-600 text-lg">
-              <MapPin className="w-5 h-5 mt-0.5" />
+              <FaMapMarkerAlt className="w-5 h-5 mt-0.5" />
               {typeof appointment.patientAddress === "object"
                 ? `${appointment.patientAddress.line1}, ${appointment.patientAddress.line2}`
                 : appointment.patientAddress}
@@ -92,10 +92,10 @@ const AppointmentDetails = () => {
 
         <div className="flex gap-6 mt-6 flex-wrap">
           <div className="flex items-center gap-2 bg-blue-200 text-blue-800 px-4 py-2 rounded-full font-semibold shadow">
-            <Info className="w-5 h-5" /> Patient Info
+            <FaInfoCircle className="w-5 h-5" /> Patient Info
           </div>
           <div className="flex items-center gap-2 bg-blue-200 text-blue-800 px-4 py-2 rounded-full font-semibold shadow">
-            <Layers className="w-5 h-5" /> Contact Verified
+            <FaLayerGroup className="w-5 h-5" /> Contact Verified
           </div>
         </div>
 
@@ -105,7 +105,7 @@ const AppointmentDetails = () => {
       <section className="bg-gradient-to-r from-green-50 to-green-100 border-l-4 border-green-500 rounded-3xl shadow-xl p-12 space-y-6 hover:shadow-2xl transition duration-300">
 
         <h2 className="text-3xl font-bold flex items-center gap-4 text-green-700">
-          <UserCheck className="w-8 h-8" /> Doctor Information
+          <FaUserCheck className="w-8 h-8" /> Doctor Information
         </h2>
 
         <div className="flex flex-col sm:flex-row sm:items-center gap-12">
@@ -139,21 +139,21 @@ const AppointmentDetails = () => {
       <section className="bg-gradient-to-r from-yellow-50 to-yellow-100 border-l-4 border-yellow-500 rounded-3xl shadow-xl p-12 space-y-6 hover:shadow-2xl transition duration-300">
 
         <h2 className="text-3xl font-bold flex items-center gap-4 text-yellow-700">
-          <Calendar className="w-8 h-8" /> Appointment Details
+          <FaCalendarAlt className="w-8 h-8" /> Appointment Details
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-gray-800 text-lg">
 
           <div className="flex items-center gap-3 text-lg">
-            <Calendar className="w-6 h-6 text-gray-500" /> Date: {appointment.date}
+            <FaCalendarAlt className="w-6 h-6 text-gray-500" /> Date: {appointment.date}
           </div>
 
           <div className="flex items-center gap-3 text-lg">
-            <Clock className="w-6 h-6 text-gray-500" /> Time: {appointment.time}
+            <FaClock className="w-6 h-6 text-gray-500" /> Time: {appointment.time}
           </div>
 
           <div className="flex items-center gap-3 text-lg">
-            <DollarSign className="w-6 h-6 text-gray-500" /> Fees: ${appointment.fees}
+            <FaDollarSign className="w-6 h-6 text-gray-500" /> Fees: ${appointment.fees}
           </div>
 
           <div className="flex items-center gap-3 text-lg">
