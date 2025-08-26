@@ -7,7 +7,8 @@ export const DoctorContext = createContext()
 
 const DoctorContextProvider = (props) => {
 
-    const backendUrl = import.meta.env.VITE_BACKEND_URL || import.meta.env.VITE_BACKEND_URL_PROD
+    const backendUrl = import.meta.env.VITE_BACKEND_URL_LOCAL || 
+                      import.meta.env.VITE_BACKEND_URL_PROD
 
     const [dToken, setDToken] = useState(localStorage.getItem('dToken') ? localStorage.getItem('dToken') : '')
     const [appointments, setAppointments] = useState([])
