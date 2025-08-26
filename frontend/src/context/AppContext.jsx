@@ -9,8 +9,8 @@ const AppContextProvider = (props) => {
     const currencySymbol = '৳'
     
     // Smart backend URL selection with fallback
-    const backendUrl = import.meta.env.VITE_BACKEND_URL_LOCAL || 
-                      import.meta.env.VITE_BACKEND_URL_PROD
+    const backendUrl = import.meta.env.VITE_BACKEND_URL_PROD || 
+                      import.meta.env.VITE_BACKEND_URL_LOCAL
 
     const [doctors, setDoctors] = useState([])
     const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : '')
