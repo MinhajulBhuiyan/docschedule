@@ -88,7 +88,7 @@ ADMIN_PASSWORD=your_admin_password
 - ✅ User registration & secure login
 - 🔍 Browse doctors by speciality
 - 📅 Real-time appointment booking
-- 💳 Secure payments (Stripe/Razorpay)
+- 💳 Secure payments
 - 📱 Responsive mobile design
 - 📋 Appointment management
 
@@ -116,7 +116,6 @@ ADMIN_PASSWORD=your_admin_password
 - MongoDB & Mongoose
 - JWT Authentication
 - Cloudinary (File Storage)
-- Stripe & Razorpay (Payments)
 
 **Frontend**
 - React 19 & Vite
@@ -131,17 +130,3 @@ ADMIN_PASSWORD=your_admin_password
 - MongoDB Atlas
 - Docker Support
 
----
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) file for details.
-
----
-
-## 📞 Contact
-
-[![GitHub](https://img.shields.io/badge/GitHub-Issues-red?style=flat-square&logo=github)](https://github.com/MinhajulBhuiyan/docschedule/issues)
-[![Email](https://img.shields.io/badge/Email-Contact-blue?style=flat-square&logo=gmail)](mailto:support@docschedule.com)
-
-**Developer:** [MinhajulBhuiyan](https://github.com/MinhajulBhuiyan)
