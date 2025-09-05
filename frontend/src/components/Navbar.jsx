@@ -98,7 +98,7 @@ const Navbar = () => {
               <NavLink to='/login' className='text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors px-3 py-2'>
                 Login
               </NavLink>
-              <NavLink to='/signup' className='bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-blue-700 transition-colors'>
+              <NavLink to='/signup' className='bg-blue-500 text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-blue-600 transition-colors'>
                 Sign Up
               </NavLink>
             </div>
