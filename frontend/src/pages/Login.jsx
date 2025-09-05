@@ -82,7 +82,7 @@ const Login = () => {
                             </div>
                         </div>
 
-                        <button className='w-full bg-[#155af9] text-white py-3 rounded-md font-medium hover:bg-[#155af9]/90 transition-colors'>
+                        <button className='w-full bg-[#1a66ff] text-white py-3 rounded-md font-medium hover:bg-[#155af9] transition-colors'>
                             Sign In
                         </button>
                     </form>
