@@ -551,7 +551,7 @@ const Appointment = () => {
                             <p className="text-gray-600 mb-4">Comprehensive laboratory testing with detailed reports and analysis.</p>
                             <div className="flex items-center justify-between">
                                 <span className="text-lg font-bold text-yellow-600">From {currencySymbol}50</span>
-                                <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                                <button className="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                                     Book Now
                                 </button>
                             </div>
@@ -608,7 +608,7 @@ const Appointment = () => {
                             <p className="text-gray-600 mb-4">Virtual consultations from anywhere with video calling.</p>
                             <div className="flex items-center justify-between">
                                 <span className="text-lg font-bold text-blue-600">From {currencySymbol}80</span>
-                                <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                                <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                                     Book Now
                                 </button>
                             </div>
@@ -627,7 +627,7 @@ const Appointment = () => {
                             <p className="text-gray-600 mb-4">Regular check-ups and health screenings for prevention.</p>
                             <div className="flex items-center justify-between">
                                 <span className="text-lg font-bold text-purple-600">From {currencySymbol}120</span>
-                                <button className="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                                <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                                     Book Now
                                 </button>
                             </div>
