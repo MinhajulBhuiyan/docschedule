@@ -50,7 +50,7 @@ const Navbar = () => {
         <ul className='hidden md:flex items-center gap-6'>
           <NavLink to='/' className={({ isActive }) => 
             `text-sm font-medium px-3 py-2 rounded-md transition-colors duration-200 ${
-              isActive ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+              isActive ? 'text-blue-600 bg-blue-100' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
             }`
           }>
             <li>HOME</li>
@@ -58,7 +58,7 @@ const Navbar = () => {
           
           <NavLink to='/doctors' className={({ isActive }) => 
             `text-sm font-medium px-3 py-2 rounded-md transition-colors duration-200 ${
-              isActive ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+              isActive ? 'text-blue-600 bg-blue-100' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
             }`
           }>
             <li>ALL DOCTORS</li>
@@ -66,7 +66,7 @@ const Navbar = () => {
           
           <NavLink to='/about' className={({ isActive }) => 
             `text-sm font-medium px-3 py-2 rounded-md transition-colors duration-200 ${
-              isActive ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+              isActive ? 'text-blue-600 bg-blue-100' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
             }`
           }>
             <li>ABOUT</li>
@@ -74,7 +74,7 @@ const Navbar = () => {
           
           <NavLink to='/contact' className={({ isActive }) => 
             `text-sm font-medium px-3 py-2 rounded-md transition-colors duration-200 ${
-              isActive ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+              isActive ? 'text-blue-600 bg-blue-100' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
             }`
           }>
             <li>CONTACT</li>
